@@ -8,7 +8,7 @@ class LoginFormField extends StatelessWidget {
     this.suffixIcon,
   });
 
-  final TextEditingController? controller; 
+  final TextEditingController? controller;
   final bool? obscureText;
   final Widget? suffixIcon;
 
@@ -23,8 +23,8 @@ class LoginFormField extends StatelessWidget {
           onTapOutside: (details) {
             FocusScope.of(context).unfocus();
           },
-          decoration: InputDecoration(
-            suffixIcon: suffixIcon, 
+          decoration: const InputDecoration(
+            filled: true,
           ),
         ),
       ),

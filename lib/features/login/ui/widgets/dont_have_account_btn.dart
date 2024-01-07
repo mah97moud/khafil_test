@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:khafil_test/core/managers/colors_manager.dart';
 import 'package:khafil_test/core/managers/styles_manager.dart';
+import 'package:khafil_test/core/routes/routes_manager.dart';
+import 'package:khafil_test/core/routes/routes_names.dart';
 
 class DontHaveAccountBtn extends StatelessWidget {
   const DontHaveAccountBtn({
@@ -12,7 +14,9 @@ class DontHaveAccountBtn extends StatelessWidget {
     return SliverToBoxAdapter(
       child: InkWell(
         onTap: (){
-          
+          RoutesManager.goNamed(
+            RoutesNames.register,
+          );
         },
         child: Text.rich(
           TextSpan(

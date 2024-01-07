@@ -12,14 +12,13 @@ class ThemeManager {
     ),
     textTheme: GoogleFonts.montserratTextTheme(),
   ).copyWith(
-    appBarTheme: const AppBarTheme(
-        // titleTextStyle: StylesManager.textStyle18,
-
-        ),
+    appBarTheme: const AppBarTheme(),
+    scaffoldBackgroundColor: ColorsManager.white,
     inputDecorationTheme: const InputDecorationTheme(
       fillColor: ColorsManager.grey50,
       filled: true,
       border: OutlineInputBorder(
+        borderSide: BorderSide.none,
         borderRadius: BorderRadius.all(
           Radius.circular(16.0),
         ),

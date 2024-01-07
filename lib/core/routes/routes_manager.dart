@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 
@@ -16,6 +17,9 @@ class RoutesManager {
   static final GlobalKey<NavigatorState> _rootKey = GlobalKey<NavigatorState>();
 
   static NavigatorState get root => _rootKey.currentState!;
+
+  /// Get current BuildContext
+  static BuildContext get context => root.context;
   static final GlobalKey<NavigatorState> _shellKey = GlobalKey<NavigatorState>(
     debugLabel: 'shell',
   );
@@ -23,11 +27,69 @@ class RoutesManager {
   static NavigatorState get shell => _shellKey.currentState!;
 
   static Future<T?> push<T extends Object?>(
-    Route<T> route,
-  ) =>
-      root.push(route);
+    String path, {
+    Object? extra,
+  }) =>
+      context.push(
+        path,
+        extra: extra,
+      );
+
+  static Future<T?> pushNamed<T extends Object?>(
+    String name, {
+    Map<String, String> pathParameters = const <String, String>{},
+    JSON queryParameters = const <String, dynamic>{},
+  }) =>
+      context.pushNamed(
+        name,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
+
+  static void pushReplacement<T extends Object?>(
+    String path, {
+    Object? extra,
+  }) =>
+      context.pushReplacement(
+        path,
+        extra: extra,
+      );
+
+  static void pushReplacementNamed<T extends Object?>(
+    String name, {
+    Map<String, String> pathParameters = const <String, String>{},
+    JSON queryParameters = const <String, dynamic>{},
+  }) =>
+      context.pushReplacementNamed(
+        name,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
 
   static void pop<T extends Object?>([T? result]) => root.pop(result);
+
+  ///Go
+  static go<T extends Object?>(
+    String path, {
+    Object? extra,
+  }) =>
+      context.go(
+        path,
+        extra: extra,
+      );
+
+  ///Go Named
+
+  static goNamed<T extends Object?>(
+    String name, {
+    Map<String, String> pathParameters = const <String, String>{},
+    JSON queryParameters = const <String, dynamic>{},
+  }) =>
+      context.goNamed(
+        name,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
 
   final router = GoRouter(
     navigatorKey: _rootKey,
@@ -56,8 +118,7 @@ class RoutesManager {
           ),
         ],
       ),
- 
-       GoRoute(
+      GoRoute(
         path: '/${RoutesNames.login}',
         name: RoutesNames.login,
         pageBuilder: (context, state) {
@@ -77,9 +138,7 @@ class RoutesManager {
           ),
         ],
       ),
- 
- 
-   ],
+    ],
     redirect: (context, state) {
       final bool loggingIn = state.uri.path == '/${RoutesNames.login}';
 
