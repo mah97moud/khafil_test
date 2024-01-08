@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
+  calendar_date_picker2: ^0.5.3
   dio: ^5.4.0
   easy_stepper: ^0.8.3
   equatable: ^2.0.5
@@ -38,3 +39,4 @@ flutter:
 
   assets:
     - assets/svgs/
+    - assets/images/

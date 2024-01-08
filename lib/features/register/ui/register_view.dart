@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:khafil_test/features/common/sizes.dart';
-import 'package:khafil_test/features/register/ui/widgets/register_form_field.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_about.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_gender.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_salary.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_section.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_select_date.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_skills.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_stepper.dart';
+import 'package:khafil_test/features/register/ui/widgets/select_avatar.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -37,44 +43,35 @@ class _RegisterViewState extends State<RegisterView> {
                 setState(() => activeStep = index);
               },
             ),
-            const SliverToBoxAdapter(
-              child: Sizes.h32(),
-            ),
-            if(activeStep == 1)
-            const SliverToBoxAdapter(
-              child: SingleChildScrollView(
+            if (activeStep == 1)
+              RegisterSection(
+                activeStep: activeStep,
+                onStepReached: (index) {
+                  setState(() {
+                    activeStep = index + 1;
+                  });
+                },
+              ),
+            if (activeStep == 2)
+                const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    Row(
+                    SelectAvatar(),
+                    RegisterAbout(),
+                    RegisterSalary(),
+                    RegisterSelectDate(),
+                    RegisterGender(),
+                    RegisterSkills(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              RegisterFormText(
-                                'First Name',
-                              ),
-                              RegisterFormField(),
-                            ],
-                          ),
-                        ),
-                        Expanded( 
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              RegisterFormText(
-                                'Last Name',
-                              ),
-                              RegisterFormField(),
-                            ],
-                          ),
-                        ),
+                        RegisterFormText('Favourite Social Media'),
+                        Sizes.h16(),
                       ],
                     )
-                  ]
+                  ],
                 ),
               ),
-            )
           ],
         ),
       ),

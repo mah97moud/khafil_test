@@ -6,6 +6,8 @@ class  ColorsManager {
   const ColorsManager._();
 
   static const Color primary = Color(0xff1dbf73);
+  static const Color primary100 = Color(0xFFE9F9F1);
+  static const Color grey800 = Color(0xFF333333);
   static const Color grey500 = Color(0xff696F79);
   static const Color grey400 = Color(0xff8692A6);
   static const Color grey200 = Color(0xFFE6EAEF);

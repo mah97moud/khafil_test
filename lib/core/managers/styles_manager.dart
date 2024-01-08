@@ -22,6 +22,16 @@ class StylesManager {
     fontSize: 14.0,
     fontWeight: FontWeight.w500,
   );
+  ///text style
+  /// text size 14
+  /// text weight FontWeight.w500
+  /// text color ColorsManager.grey500
+  static const TextStyle textStyle16 = TextStyle(
+    fontSize: 16.0,
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.grey800,
+ 
+  );
 
   ///text style
   /// text size 18
