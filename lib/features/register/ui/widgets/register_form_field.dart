@@ -8,6 +8,9 @@ class RegisterFormField extends StatelessWidget {
     this.suffixIcon,
     this.padding,
     this.maxLines,
+    this.focusNode,
+    this.onChanged,
+    this.error,
   });
 
   final TextEditingController? controller;
@@ -15,6 +18,10 @@ class RegisterFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final EdgeInsets? padding;
   final int? maxLines;
+  final FocusNode? focusNode;
+  final void Function(String text)? onChanged;
+
+  final String? error;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +30,18 @@ class RegisterFormField extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
       child: TextFormField(
         controller: controller,
+        focusNode: focusNode,
         obscureText: obscureText ?? false,
         onTapOutside: (details) {
           FocusScope.of(context).unfocus();
         },
+        autofocus: false,
+        onChanged: onChanged,
         maxLines: obscureText == true ? 1 : maxLines,
         decoration: InputDecoration(
           filled: true,
           suffixIcon: suffixIcon,
+          errorText: error,
         ),
       ),
     );

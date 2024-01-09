@@ -19,7 +19,10 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+
   int activeStep = 1;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

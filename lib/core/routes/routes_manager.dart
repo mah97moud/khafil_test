@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
+import 'package:khafil_test/features/register/managers/cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 
 import '../../features/home/ui/home_view.dart';
@@ -131,8 +133,11 @@ class RoutesManager {
             path: RoutesNames.register,
             name: RoutesNames.register,
             pageBuilder: (context, state) {
-              return const NoTransitionPage(
-                child: RegisterView(),
+              return   NoTransitionPage(
+                child: BlocProvider(
+                  create: (context) => RegisterCubit(),
+                  child: const RegisterView(),
+                ),
               );
             },
           ),
