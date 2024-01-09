@@ -11,7 +11,6 @@ class RegisterGender extends StatefulWidget {
 }
 
 class _RegisterGenderState extends State<RegisterGender> {
-
   int groupValue = 0;
   @override
   Widget build(BuildContext context) {
@@ -23,10 +22,10 @@ class _RegisterGenderState extends State<RegisterGender> {
           child: Row(
             children: [
               SizedBox(
-                width: 150.0, 
+                width: 150.0,
                 child: RadioListTile<int>(
                   value: 0,
-                  groupValue: groupValue, 
+                  groupValue: groupValue,
                   onChanged: (newValue) {
                     _onChanged(newValue!);
                   },
@@ -34,10 +33,10 @@ class _RegisterGenderState extends State<RegisterGender> {
                 ),
               ),
               SizedBox(
-                width: 160.0, 
+                width: 160.0,
                 child: RadioListTile<int>(
                   value: 1,
-                  groupValue: groupValue, 
+                  groupValue: groupValue,
                   onChanged: (newValue) {
                     _onChanged(newValue!);
                   },
@@ -51,7 +50,7 @@ class _RegisterGenderState extends State<RegisterGender> {
     );
   }
 
-  void _onChanged(int value)  {
+  void _onChanged(int value) {
     setState(() {
       groupValue = value;
     });

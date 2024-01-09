@@ -1,6 +1,9 @@
 class EndPoints {
   EndPoints._();
 
+  ///GET Dependencies
+  static const String dependencies = 'api/test/dependencies';
+
   ///POST Register
   static const String register = 'api/test/user/register';
 

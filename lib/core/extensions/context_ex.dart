@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ContextEx on BuildContext {
- void showSnackBar(String message) => ScaffoldMessenger.of(this)
+  void showSnackBar(String message) => ScaffoldMessenger.of(this)
     ..clearSnackBars()
     ..showSnackBar(
       SnackBar(
@@ -11,8 +11,7 @@ extension ContextEx on BuildContext {
       ),
     );
 
-
- void showLoadingSnackBar(String message) => ScaffoldMessenger.of(this)
+  void showLoadingSnackBar(String message) => ScaffoldMessenger.of(this)
     ..clearSnackBars()
     ..showSnackBar(
       SnackBar(

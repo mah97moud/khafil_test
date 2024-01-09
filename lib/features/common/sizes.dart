@@ -40,14 +40,14 @@ class Sizes extends SizedBox {
           height: 32.0,
           width: 0,
         );
-        
+
   const Sizes.h24({
     super.key,
   }) : super(
           height: 24.0,
           width: 0,
         );
-        
+
   const Sizes.h20({
     super.key,
   }) : super(
@@ -93,17 +93,17 @@ class Sizes extends SizedBox {
   const Sizes.w32({
     super.key,
   }) : super(
-          height:0.0 ,
-          width:32.0,
+          height: 0.0,
+          width: 32.0,
         );
-        
+
   const Sizes.w24({
     super.key,
   }) : super(
           height: 0.0,
           width: 24.0,
         );
-        
+
   const Sizes.w20({
     super.key,
   }) : super(

@@ -36,13 +36,15 @@ class RegisterFavSocialMedia extends StatelessWidget {
           icon: Container(
             height: 20.0,
             width: 20.0,
-            alignment: Alignment.center, 
+            alignment: Alignment.center,
             decoration: const ShapeDecoration(
               shape: CircleBorder(),
-              color: ColorsManager.linkedinBg , 
+              color: ColorsManager.linkedinBg,
             ),
-            child: SvgPicture.asset(SvgsManager.linkedin,
-            fit: BoxFit.cover,), 
+            child: SvgPicture.asset(
+              SvgsManager.linkedin,
+              fit: BoxFit.cover,
+            ),
           ),
           title: 'LinkedIn',
           onChanged: (selected) {},

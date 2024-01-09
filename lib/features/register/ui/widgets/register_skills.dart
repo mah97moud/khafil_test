@@ -38,11 +38,11 @@ class RegisterSkills extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               deleteIconColor: ColorsManager.primary,
-              onDeleted: (){},
+              onDeleted: () {},
               side: BorderSide.none,
               deleteIcon: const Icon(
                 Icons.close,
-                size: 12.0, 
+                size: 12.0,
               ),
             ),
           ]),

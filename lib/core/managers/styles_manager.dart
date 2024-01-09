@@ -22,6 +22,7 @@ class StylesManager {
     fontSize: 14.0,
     fontWeight: FontWeight.w500,
   );
+
   ///text style
   /// text size 14
   /// text weight FontWeight.w500
@@ -30,7 +31,6 @@ class StylesManager {
     fontSize: 16.0,
     fontWeight: FontWeight.w500,
     color: ColorsManager.grey800,
- 
   );
 
   ///text style

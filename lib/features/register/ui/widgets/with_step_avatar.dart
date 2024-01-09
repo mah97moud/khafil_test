@@ -6,7 +6,7 @@ class WithStepAvatar extends StatelessWidget {
     super.key,
   });
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return const CircleAvatar(
       backgroundColor: ColorsManager.white,

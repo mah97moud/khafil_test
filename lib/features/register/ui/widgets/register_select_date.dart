@@ -20,8 +20,7 @@ class RegisterSelectDate extends StatelessWidget {
           onTap: () async {
             var results = await showCalendarDatePicker2Dialog(
               context: context,
-              config:
-                  CalendarDatePicker2WithActionButtonsConfig(),
+              config: CalendarDatePicker2WithActionButtonsConfig(),
               dialogSize: const Size(325, 400),
               value: [DateTime.now()],
               borderRadius: BorderRadius.circular(15),
@@ -38,7 +37,6 @@ class RegisterSelectDate extends StatelessWidget {
               color: ColorsManager.grey50,
             ),
             child: Row(
-    
               children: [
                 Text(
                   DateTime.now().toString(),

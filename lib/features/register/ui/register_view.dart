@@ -66,9 +66,8 @@ class _RegisterViewState extends State<RegisterView> {
                     const RegisterFavSocialMedia(),
                     const Sizes.h32(),
                     DefaultBtn(
-                      
                       'Submit',
-                      width: double.infinity, 
+                      width: double.infinity,
                       onPressed: () {},
                     ),
                     const Sizes.h84(),

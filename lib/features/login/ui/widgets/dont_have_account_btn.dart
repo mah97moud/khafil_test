@@ -13,7 +13,7 @@ class DontHaveAccountBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: InkWell(
-        onTap: (){
+        onTap: () {
           RoutesManager.goNamed(
             RoutesNames.register,
           );

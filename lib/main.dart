@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:khafil_test/core/managers/theme_manager.dart';
 
+import 'core/app/di.dart';
 import 'core/routes/routes_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initDI();
   runApp(const MainApp());
 }
 
@@ -13,7 +15,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final router = RoutesManager().router;
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,

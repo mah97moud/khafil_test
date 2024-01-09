@@ -6,6 +6,8 @@ class AppSourceImpl implements AppSource {
   AppSourceImpl({required AppServiceClient appServiceClient})
       : _appServiceClient = appServiceClient;
 
-
-
+  @override
+  Future<DependencyRM> getDependencies() async {
+    return await _appServiceClient.getDependencies();
+  }
 }

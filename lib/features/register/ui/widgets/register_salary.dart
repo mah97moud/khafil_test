@@ -15,7 +15,7 @@ class RegisterSalary extends StatelessWidget {
       children: [
         const RegisterFormText('Salary'),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
           height: 62.0,
           decoration: ShapeDecoration(
             color: ColorsManager.grey50,
