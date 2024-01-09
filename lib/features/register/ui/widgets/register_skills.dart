@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:khafil_test/core/managers/styles_manager.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
+import 'package:khafil_test/features/register/ui/widgets/skill_chip.dart';
 
+import '../../../../core/app/di.dart';
 import '../../../../core/managers/colors_manager.dart';
 
 class RegisterSkills extends StatelessWidget {
@@ -16,36 +17,26 @@ class RegisterSkills extends StatelessWidget {
       children: [
         const RegisterFormText('Skills'),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-          height: 102.0,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 20.0,
+          ).copyWith(
+            bottom: 8.0,
+          ),
+          padding: const EdgeInsets.all(8.0),
+          height: 125.0,
           width: double.infinity,
           decoration: ShapeDecoration(
-            color: ColorsManager.grey50,
+            color: ColorsManager.black,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          child: Wrap(children: [
-            Chip(
-              label: Text(
-                'Video Production',
-                style: StylesManager.textStyle12
-                    .copyWith(color: ColorsManager.primary),
-              ),
-              backgroundColor: ColorsManager.primary100,
-              shape: RoundedRectangleBorder(
-                side: BorderSide.none,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              deleteIconColor: ColorsManager.primary,
-              onDeleted: () {},
-              side: BorderSide.none,
-              deleteIcon: const Icon(
-                Icons.close,
-                size: 12.0,
-              ),
+          child: SingleChildScrollView(
+            child: Wrap(
+              spacing: 10.0,
+              children: tags.map((e) => SkillChip(title: e.label)).toList(),
             ),
-          ]),
+          ),
         ),
       ],
     );
