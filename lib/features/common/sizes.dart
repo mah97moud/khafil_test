@@ -20,6 +20,13 @@ class Sizes extends SizedBox {
           width: 0,
         );
 
+  const Sizes.h84({
+    super.key,
+  }) : super(
+          height: 84.0,
+          width: 0,
+        );
+
   const Sizes.h34({
     super.key,
   }) : super(
@@ -67,5 +74,61 @@ class Sizes extends SizedBox {
   }) : super(
           height: 8.0,
           width: 0,
+        );
+
+  const Sizes.w56({
+    super.key,
+  }) : super(
+          height: 0,
+          width: 56.0,
+        );
+
+  const Sizes.w34({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 34.0,
+        );
+
+  const Sizes.w32({
+    super.key,
+  }) : super(
+          height:0.0 ,
+          width:32.0,
+        );
+        
+  const Sizes.w24({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 24.0,
+        );
+        
+  const Sizes.w20({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 20.0,
+        );
+
+  const Sizes.w16({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 16.0,
+        );
+
+  const Sizes.w12({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 12.0,
+        );
+
+  const Sizes.w8({
+    super.key,
+  }) : super(
+          height: 0.0,
+          width: 8.0,
         );
 }

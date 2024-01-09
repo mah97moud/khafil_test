@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:khafil_test/features/common/default_btn.dart';
 import 'package:khafil_test/features/common/sizes.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_about.dart';
-import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_fav_social_media.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_gender.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_salary.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_section.dart';
@@ -53,22 +54,24 @@ class _RegisterViewState extends State<RegisterView> {
                 },
               ),
             if (activeStep == 2)
-                const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SelectAvatar(),
-                    RegisterAbout(),
-                    RegisterSalary(),
-                    RegisterSelectDate(),
-                    RegisterGender(),
-                    RegisterSkills(),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RegisterFormText('Favourite Social Media'),
-                        Sizes.h16(),
-                      ],
-                    )
+                    const SelectAvatar(),
+                    const RegisterAbout(),
+                    const RegisterSalary(),
+                    const RegisterSelectDate(),
+                    const RegisterGender(),
+                    const RegisterSkills(),
+                    const RegisterFavSocialMedia(),
+                    const Sizes.h32(),
+                    DefaultBtn(
+                      
+                      'Submit',
+                      width: double.infinity, 
+                      onPressed: () {},
+                    ),
+                    const Sizes.h84(),
                   ],
                 ),
               ),

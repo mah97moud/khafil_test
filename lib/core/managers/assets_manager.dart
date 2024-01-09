@@ -5,6 +5,9 @@ class SvgsManager {
   const SvgsManager._();
   static const String loginCuate1 = '$svgsPath/login_cuate1.svg';
   static const String calendar = '$svgsPath/calendar.svg';
+  static const String facebook = '$svgsPath/facebook.svg';
+  static const String linkedin = '$svgsPath/linkedin.svg';
+  static const String twitter = '$svgsPath/twitter.svg';
 }
 
 class ImagesManager {
