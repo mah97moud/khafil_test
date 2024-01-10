@@ -11,8 +11,6 @@ class RegisterStepper extends StatelessWidget {
   const RegisterStepper({
     super.key,
   });
- 
- 
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +78,7 @@ class RegisterStepper extends StatelessWidget {
     );
   }
 
-  EasyStep _registerStep( int activeStep) {
+  EasyStep _registerStep(int activeStep) {
     return EasyStep(
       customStep: CircleAvatar(
         backgroundColor: ColorsManager.primary,

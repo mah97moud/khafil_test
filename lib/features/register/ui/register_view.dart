@@ -47,7 +47,7 @@ class _RegisterViewState extends State<RegisterView> {
               } else if (state.submissionStatus ==
                   SubmissionStatus.inProgress) {
                 // TODO: Show Loading
-              }  
+              }
             },
             builder: (context, state) {
               var error = state.error;

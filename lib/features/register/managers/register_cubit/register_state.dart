@@ -78,7 +78,8 @@ class RegisterState extends Equatable {
       password: password ?? this.password,
       securePassword: securePassword ?? this.securePassword,
       confirmPassword: confirmPassword ?? this.confirmPassword,
-      secureConfirmPassword: secureConfirmPassword ?? this.secureConfirmPassword,
+      secureConfirmPassword:
+          secureConfirmPassword ?? this.secureConfirmPassword,
       userType: userType ?? this.userType,
       submissionStatus: submissionStatus ?? SubmissionStatus.idle,
       error: error,

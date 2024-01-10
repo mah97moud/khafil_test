@@ -58,7 +58,7 @@ class _RegisterLastNameState extends State<RegisterLastName> {
                     : (error == NameValidationError.empty
                         ? null
                         : 'Please enter a valid last name'),
-                        onChanged: cubit.onLastNameChanged,
+                onChanged: cubit.onLastNameChanged,
                 padding: const EdgeInsets.symmetric(
                   vertical: 8.0,
                 ).copyWith(

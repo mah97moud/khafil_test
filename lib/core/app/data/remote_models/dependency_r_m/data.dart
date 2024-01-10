@@ -5,21 +5,21 @@ import 'tag.dart';
 import 'type.dart';
 
 class Data extends Equatable {
-  final List<Type>? types;
-  final List<Tag>? tags;
-  final List<SocialMedia>? socialMedia;
+  final List<TypeRM>? types;
+  final List<TagRM>? tags;
+  final List<SocialMediaRM>? socialMedia;
 
   const Data({this.types, this.tags, this.socialMedia});
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         types: (json['types'] as List<dynamic>?)
-            ?.map((e) => Type.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => TypeRM.fromJson(e as Map<String, dynamic>))
             .toList(),
         tags: (json['tags'] as List<dynamic>?)
-            ?.map((e) => Tag.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => TagRM.fromJson(e as Map<String, dynamic>))
             .toList(),
         socialMedia: (json['social_media'] as List<dynamic>?)
-            ?.map((e) => SocialMedia.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => SocialMediaRM.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 

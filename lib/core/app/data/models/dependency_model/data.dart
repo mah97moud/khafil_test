@@ -10,14 +10,9 @@ part 'data.g.dart';
 @freezed
 class Data with _$Data {
   factory Data({
-    @Default([])
-    List<Type> types,
-    @Default([])
-
-    List<Tag> tags,
-    @Default([])
-
-    @JsonKey(name: 'social_media') List<SocialMedia> socialMedia,
+    @Default([]) List<TypeModel> types,
+    @Default([]) List<TagModel> tags,
+    @Default([]) @JsonKey(name: 'social_media') List<SocialMedia> socialMedia,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);

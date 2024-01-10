@@ -20,8 +20,8 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Data {
-  List<Type> get types => throw _privateConstructorUsedError;
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<TypeModel> get types => throw _privateConstructorUsedError;
+  List<TagModel> get tags => throw _privateConstructorUsedError;
   @JsonKey(name: 'social_media')
   List<SocialMedia> get socialMedia => throw _privateConstructorUsedError;
 
@@ -36,8 +36,8 @@ abstract class $DataCopyWith<$Res> {
       _$DataCopyWithImpl<$Res, Data>;
   @useResult
   $Res call(
-      {List<Type> types,
-      List<Tag> tags,
+      {List<TypeModel> types,
+      List<TagModel> tags,
       @JsonKey(name: 'social_media') List<SocialMedia> socialMedia});
 }
 
@@ -62,11 +62,11 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<Type>,
+              as List<TypeModel>,
       tags: null == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tag>,
+              as List<TagModel>,
       socialMedia: null == socialMedia
           ? _value.socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
@@ -83,8 +83,8 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<Type> types,
-      List<Tag> tags,
+      {List<TypeModel> types,
+      List<TagModel> tags,
       @JsonKey(name: 'social_media') List<SocialMedia> socialMedia});
 }
 
@@ -106,11 +106,11 @@ class __$$DataImplCopyWithImpl<$Res>
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<Type>,
+              as List<TypeModel>,
       tags: null == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tag>,
+              as List<TagModel>,
       socialMedia: null == socialMedia
           ? _value._socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$DataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DataImpl implements _Data {
   _$DataImpl(
-      {final List<Type> types = const [],
-      final List<Tag> tags = const [],
+      {final List<TypeModel> types = const [],
+      final List<TagModel> tags = const [],
       @JsonKey(name: 'social_media')
       final List<SocialMedia> socialMedia = const []})
       : _types = types,
@@ -134,19 +134,19 @@ class _$DataImpl implements _Data {
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
 
-  final List<Type> _types;
+  final List<TypeModel> _types;
   @override
   @JsonKey()
-  List<Type> get types {
+  List<TypeModel> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_types);
   }
 
-  final List<Tag> _tags;
+  final List<TagModel> _tags;
   @override
   @JsonKey()
-  List<Tag> get tags {
+  List<TagModel> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tags);
@@ -201,17 +201,17 @@ class _$DataImpl implements _Data {
 
 abstract class _Data implements Data {
   factory _Data(
-          {final List<Type> types,
-          final List<Tag> tags,
+          {final List<TypeModel> types,
+          final List<TagModel> tags,
           @JsonKey(name: 'social_media') final List<SocialMedia> socialMedia}) =
       _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
   @override
-  List<Type> get types;
+  List<TypeModel> get types;
   @override
-  List<Tag> get tags;
+  List<TagModel> get tags;
   @override
   @JsonKey(name: 'social_media')
   List<SocialMedia> get socialMedia;

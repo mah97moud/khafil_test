@@ -47,10 +47,9 @@ class _RegisterConfirmPasswordState extends State<RegisterConfirmPassword> {
                 : null;
             return RegisterFormField(
               obscureText: state.secureConfirmPassword,
-              suffixIcon:
-              state.secureConfirmPassword == true ?
-               const Icon(Icons.visibility_off_outlined) 
-               : const Icon(Icons.visibility_outlined),
+              suffixIcon: state.secureConfirmPassword == true
+                  ? const Icon(Icons.visibility_off_outlined)
+                  : const Icon(Icons.visibility_outlined),
               onTapSuffixIcon: cubit.toggleSecureConfirmPassword,
               focusNode: focusNode,
               onChanged: cubit.onPasswordConfirmationChanged,

@@ -10,4 +10,29 @@ class AppSourceImpl implements AppSource {
   Future<DependencyRM> getDependencies() async {
     return await _appServiceClient.getDependencies();
   }
+
+  @override
+  Future<String> register({
+    required String firstName,
+    required String lastName,
+    required String about,
+    required List<int> tags,
+    required List<String> favoriteSocialMedia,
+    required int salary,
+    required String email,
+    required String password,
+    required String confirmPassword,
+    required String birthDate,
+    required int gender,
+    required int type,
+    Part? avatar,
+  }) {
+    // TODO: implement register
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<LoginRM> login({required Map<String, dynamic> data}) async {
+    return await _appServiceClient.login(data);
+  }
 }

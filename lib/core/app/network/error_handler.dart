@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../resources/app_strings.dart';
 import 'dio_failure.dart';
@@ -27,20 +28,44 @@ class ErrorHandler {
       DioExceptionType.cancel => DataSource.cacheError.toDioFailure,
       DioExceptionType.connectionError =>
         DataSource.noInternetConnection.toDioFailure,
-      DioExceptionType.unknown => DataSource.unknown.toDioFailure
+      DioExceptionType.unknown => DataSource.unknown.toDioFailure,
     };
   }
 
   DioFailure _badResponse(Response? response) {
-    final data = response?.data;
+    final data = response?.data as Map<String, dynamic>?;
     final code = response?.statusCode;
 
     if (code != null && data != null) {
-      final message = data['message'];
+      debugPrint('Current Error : $data');
+      final error = data.containsKey('error')
+          ? data['error']['message']
+          : data['message'];
+      final errors = (data.containsKey('errors') ? data['errors'] : {})
+          as Map<String, dynamic>;
 
+      final emailErrors = errors.containsKey('email') ? errors['email'] : [];
+      final emailError = emailErrors.isNotEmpty ? '\n${emailErrors.first}' : '';
+
+      debugPrint('Current Error : message $error');
+      if (code == 422) {
+        return DioFailure(
+          statusCode: code,
+          message: '$error $emailError',
+        );
+      }
+
+// {
+// 	"message": "The given data was invalid.",
+// 	"errors": {
+// 		"email": [
+// 			"القيمة المحددة البريد الإلكترونى غير موجودة."
+// 		]
+// 	}
+// }
       return DioFailure(
         statusCode: code,
-        message: message ?? AppStrings.genericError,
+        message: message,
       );
     }
     return DataSource.badRequest.toDioFailure;
@@ -61,6 +86,7 @@ class NoInternetConnectionEx implements Exception {
 enum DataSource {
   success,
   noContent,
+  invalidateCredential,
   badRequest,
   forbidden,
   unauthorized,
@@ -80,6 +106,10 @@ extension DataSourceEx on DataSource {
       DataSource.success => DioFailure(
           statusCode: ResponseCode.success,
           message: ResponseMessage.success,
+        ),
+      DataSource.invalidateCredential => DioFailure(
+          statusCode: ResponseCode.invalidateCredential,
+          message: ResponseMessage.invalidateCredential,
         ),
       DataSource.noContent => DioFailure(
           statusCode: ResponseCode.noContent,
@@ -142,6 +172,7 @@ class ResponseCode {
   static const int forbidden = 403; // Api reject request
   static const int unauthorized = 401; // failure, user unauthorized
   static const int noFound = 404; // source not found
+  static const int invalidateCredential = 422; // source not found
   static const int internalServerError = 500; // failure, crash in server side
 
   /// local status code
@@ -165,6 +196,8 @@ class ResponseMessage {
   static const String unauthorized =
       AppStrings.unAuthorized; // failure, user unauthorized
   static const String noFound = AppStrings.noFound; // source not found
+  static const String invalidateCredential =
+      AppStrings.invalidateCredential; // source not found
   static const String internalServerError =
       AppStrings.genericError; // failure, crash in server side
 

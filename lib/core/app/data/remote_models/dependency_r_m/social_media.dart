@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class SocialMedia extends Equatable {
+class SocialMediaRM extends Equatable {
   final String? value;
   final String? label;
 
-  const SocialMedia({this.value, this.label});
+  const SocialMediaRM({this.value, this.label});
 
-  factory SocialMedia.fromJson(Map<String, dynamic> json) => SocialMedia(
+  factory SocialMediaRM.fromJson(Map<String, dynamic> json) => SocialMediaRM(
         value: json['value'] as String?,
         label: json['label'] as String?,
       );

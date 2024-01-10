@@ -4,13 +4,12 @@ part 'type.freezed.dart';
 part 'type.g.dart';
 
 @freezed
-class Type with _$Type {
-  factory Type({
-    @Default(0)
-    int value,
-    @Default('')
-    String label,
+class TypeModel with _$TypeModel {
+  factory TypeModel({
+    @Default(0) int value,
+    @Default('') String label,
   }) = _Type;
 
-  factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
+  factory TypeModel.fromJson(Map<String, dynamic> json) =>
+      _$TypeModelFromJson(json);
 }

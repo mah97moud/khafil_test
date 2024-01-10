@@ -49,8 +49,7 @@ class RegisterUserType extends StatelessWidget {
                       ),
                     )
                     .toList(),
-                onChanged: 
-                    context.read<RegisterCubit>().onUserTypeChanged,
+                onChanged: context.read<RegisterCubit>().onUserTypeChanged,
               );
             },
           ),

@@ -11,15 +11,13 @@ class LoginFormText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-        ),
-        child: Text(
-          title,
-          style: StylesManager.textStyle12,
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: Text(
+        title,
+        style: StylesManager.textStyle12,
       ),
     );
   }

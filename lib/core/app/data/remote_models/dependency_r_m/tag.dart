@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class Tag extends Equatable {
+class TagRM extends Equatable {
   final int? value;
   final String? label;
 
-  const Tag({this.value, this.label});
+  const TagRM({this.value, this.label});
 
-  factory Tag.fromJson(Map<String, dynamic> json) => Tag(
+  factory TagRM.fromJson(Map<String, dynamic> json) => TagRM(
         value: json['value'] as int?,
         label: json['label'] as String?,
       );

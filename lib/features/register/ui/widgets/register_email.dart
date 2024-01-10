@@ -55,14 +55,13 @@ class _RegisterEmailState extends State<RegisterEmail> {
               focusNode: focusNode,
               onChanged: cubit.onEmailChanged,
               keyboardType: TextInputType.emailAddress,
-              error:
-                  error == null
-                    ? null
-                    : (error == EmailValidationError.empty
-                        ? null
-                        : (error == EmailValidationError.alreadyRegistered
-                            ? 'Email already registered'
-                            : 'Please enter a valid email')),
+              error: error == null
+                  ? null
+                  : (error == EmailValidationError.empty
+                      ? null
+                      : (error == EmailValidationError.alreadyRegistered
+                          ? 'Email already registered'
+                          : 'Please enter a valid email')),
             );
           },
         )

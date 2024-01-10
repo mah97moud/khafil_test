@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
+import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 
 import '../../features/home/ui/home_view.dart';
 import '../../features/home_layout/ui/home_layout.dart';
+import '../../features/login/managers/login_cubit/login_cubit.dart';
 import '../../features/login/ui/login_view.dart';
+import '../app/di.dart';
 
 class RoutesManager {
   factory RoutesManager() => _instance;
@@ -124,8 +127,13 @@ class RoutesManager {
         path: '/${RoutesNames.login}',
         name: RoutesNames.login,
         pageBuilder: (context, state) {
-          return const NoTransitionPage(
-            child: LoginView(),
+          return NoTransitionPage(
+            child: BlocProvider(
+              create: (_) => LoginCubit(
+                di<LoginRepo>(),
+              ),
+              child: const LoginView(),
+            ),
           );
         },
         routes: [
@@ -133,7 +141,7 @@ class RoutesManager {
             path: RoutesNames.register,
             name: RoutesNames.register,
             pageBuilder: (context, state) {
-              return   NoTransitionPage(
+              return NoTransitionPage(
                 child: BlocProvider(
                   create: (context) => RegisterCubit(),
                   child: const RegisterView(),

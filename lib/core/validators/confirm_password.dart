@@ -16,9 +16,11 @@ class PasswordConfirmation
 
   @override
   PasswordConfirmationValidationError? validator(String value) {
-    return value.isEmpty ? PasswordConfirmationValidationError.empty : (
-      value == password.value? null: PasswordConfirmationValidationError.invalid
-    );
+    return value.isEmpty
+        ? PasswordConfirmationValidationError.empty
+        : (value == password.value
+            ? null
+            : PasswordConfirmationValidationError.invalid);
   }
 
   @override

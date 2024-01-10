@@ -8,11 +8,11 @@ part of 'data.dart';
 
 _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
       types: (json['types'] as List<dynamic>?)
-              ?.map((e) => Type.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => TypeModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       tags: (json['tags'] as List<dynamic>?)
-              ?.map((e) => Tag.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => TagModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       socialMedia: (json['social_media'] as List<dynamic>?)

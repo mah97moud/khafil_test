@@ -14,31 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Tag _$TagFromJson(Map<String, dynamic> json) {
+TagModel _$TagModelFromJson(Map<String, dynamic> json) {
   return _Tag.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Tag {
+mixin _$TagModel {
   int get value => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TagCopyWith<Tag> get copyWith => throw _privateConstructorUsedError;
+  $TagModelCopyWith<TagModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TagCopyWith<$Res> {
-  factory $TagCopyWith(Tag value, $Res Function(Tag) then) =
-      _$TagCopyWithImpl<$Res, Tag>;
+abstract class $TagModelCopyWith<$Res> {
+  factory $TagModelCopyWith(TagModel value, $Res Function(TagModel) then) =
+      _$TagModelCopyWithImpl<$Res, TagModel>;
   @useResult
   $Res call({int value, String label});
 }
 
 /// @nodoc
-class _$TagCopyWithImpl<$Res, $Val extends Tag> implements $TagCopyWith<$Res> {
-  _$TagCopyWithImpl(this._value, this._then);
+class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
+    implements $TagModelCopyWith<$Res> {
+  _$TagModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -65,7 +67,7 @@ class _$TagCopyWithImpl<$Res, $Val extends Tag> implements $TagCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$TagImplCopyWith<$Res> implements $TagCopyWith<$Res> {
+abstract class _$$TagImplCopyWith<$Res> implements $TagModelCopyWith<$Res> {
   factory _$$TagImplCopyWith(_$TagImpl value, $Res Function(_$TagImpl) then) =
       __$$TagImplCopyWithImpl<$Res>;
   @override
@@ -74,7 +76,8 @@ abstract class _$$TagImplCopyWith<$Res> implements $TagCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$TagImplCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res, _$TagImpl>
+class __$$TagImplCopyWithImpl<$Res>
+    extends _$TagModelCopyWithImpl<$Res, _$TagImpl>
     implements _$$TagImplCopyWith<$Res> {
   __$$TagImplCopyWithImpl(_$TagImpl _value, $Res Function(_$TagImpl) _then)
       : super(_value, _then);
@@ -115,7 +118,7 @@ class _$TagImpl implements _Tag {
 
   @override
   String toString() {
-    return 'Tag(value: $value, label: $label)';
+    return 'TagModel(value: $value, label: $label)';
   }
 
   @override
@@ -145,7 +148,7 @@ class _$TagImpl implements _Tag {
   }
 }
 
-abstract class _Tag implements Tag {
+abstract class _Tag implements TagModel {
   factory _Tag({final int value, final String label}) = _$TagImpl;
 
   factory _Tag.fromJson(Map<String, dynamic> json) = _$TagImpl.fromJson;

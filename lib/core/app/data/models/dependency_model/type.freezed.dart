@@ -14,32 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Type _$TypeFromJson(Map<String, dynamic> json) {
+TypeModel _$TypeModelFromJson(Map<String, dynamic> json) {
   return _Type.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Type {
+mixin _$TypeModel {
   int get value => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TypeCopyWith<Type> get copyWith => throw _privateConstructorUsedError;
+  $TypeModelCopyWith<TypeModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TypeCopyWith<$Res> {
-  factory $TypeCopyWith(Type value, $Res Function(Type) then) =
-      _$TypeCopyWithImpl<$Res, Type>;
+abstract class $TypeModelCopyWith<$Res> {
+  factory $TypeModelCopyWith(TypeModel value, $Res Function(TypeModel) then) =
+      _$TypeModelCopyWithImpl<$Res, TypeModel>;
   @useResult
   $Res call({int value, String label});
 }
 
 /// @nodoc
-class _$TypeCopyWithImpl<$Res, $Val extends Type>
-    implements $TypeCopyWith<$Res> {
-  _$TypeCopyWithImpl(this._value, this._then);
+class _$TypeModelCopyWithImpl<$Res, $Val extends TypeModel>
+    implements $TypeModelCopyWith<$Res> {
+  _$TypeModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,7 +67,7 @@ class _$TypeCopyWithImpl<$Res, $Val extends Type>
 }
 
 /// @nodoc
-abstract class _$$TypeImplCopyWith<$Res> implements $TypeCopyWith<$Res> {
+abstract class _$$TypeImplCopyWith<$Res> implements $TypeModelCopyWith<$Res> {
   factory _$$TypeImplCopyWith(
           _$TypeImpl value, $Res Function(_$TypeImpl) then) =
       __$$TypeImplCopyWithImpl<$Res>;
@@ -77,7 +78,7 @@ abstract class _$$TypeImplCopyWith<$Res> implements $TypeCopyWith<$Res> {
 
 /// @nodoc
 class __$$TypeImplCopyWithImpl<$Res>
-    extends _$TypeCopyWithImpl<$Res, _$TypeImpl>
+    extends _$TypeModelCopyWithImpl<$Res, _$TypeImpl>
     implements _$$TypeImplCopyWith<$Res> {
   __$$TypeImplCopyWithImpl(_$TypeImpl _value, $Res Function(_$TypeImpl) _then)
       : super(_value, _then);
@@ -118,7 +119,7 @@ class _$TypeImpl implements _Type {
 
   @override
   String toString() {
-    return 'Type(value: $value, label: $label)';
+    return 'TypeModel(value: $value, label: $label)';
   }
 
   @override
@@ -148,7 +149,7 @@ class _$TypeImpl implements _Type {
   }
 }
 
-abstract class _Type implements Type {
+abstract class _Type implements TypeModel {
   factory _Type({final int value, final String label}) = _$TypeImpl;
 
   factory _Type.fromJson(Map<String, dynamic> json) = _$TypeImpl.fromJson;

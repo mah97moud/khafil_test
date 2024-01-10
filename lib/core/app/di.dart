@@ -6,6 +6,7 @@ import 'package:khafil_test/core/app/network/app_source/app_source.dart';
 import 'package:khafil_test/core/app/network/repository/app_repo.dart';
 import 'package:khafil_test/core/app/network/repository/repository.dart';
 import 'package:khafil_test/core/helpers/result.dart';
+import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 
 import 'data/models/dependency_model/tag.dart';
 import 'data/models/dependency_model/type.dart';
@@ -16,8 +17,8 @@ import 'network/network_info.dart';
 final di = GetIt.instance..allowReassignment = true;
 
 List<SocialMedia> socialMedia = [];
-List<Type> types = [];
-List<Tag> tags = [];
+List<TypeModel> types = [];
+List<TagModel> tags = [];
 
 Future<void> initDI() async {
   di.registerLazySingleton<NetworkInfo>(
@@ -46,6 +47,9 @@ Future<void> initDI() async {
   di.registerFactory<Repository>(
     () => AppRepo(appSource: di(), networkInfo: di()),
   );
+  di.registerFactory<LoginRepo>(
+    () => LoginRepo(appSource: di(), networkInfo: di()),
+  );
 
   await getDependencies();
 }
@@ -56,12 +60,12 @@ Future<void> getDependencies() async {
   final result = await repository.getDependencies();
 
   result.when(
-    success: (data){
+    success: (data) {
       socialMedia = data.data.socialMedia;
       types = data.data.types;
       tags = data.data.tags;
     },
-    failure: (ex,message){
+    failure: (ex, message) {
       debugPrint('''Error : $ex \n Message : $message''');
     },
   );

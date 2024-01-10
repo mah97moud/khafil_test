@@ -20,12 +20,14 @@ class DioFactory {
 
     final Map<String, dynamic> headers = {
       contentType: appJson,
-      accept: acceptAll,
+      accept: appJson,
     };
 
     dio.options = BaseOptions(
       baseUrl: baseUrl,
       headers: headers,
+      receiveDataWhenStatusError: true,
+      followRedirects: false,
     );
 
     if (!kReleaseMode) {

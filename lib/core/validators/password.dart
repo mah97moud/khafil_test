@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:formz/formz.dart';
 
 class Password extends FormzInput<String, PasswordValidationError> {
@@ -18,9 +14,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
       return null;
     }
   }
-
 }
-
 
 enum PasswordValidationError {
   empty,

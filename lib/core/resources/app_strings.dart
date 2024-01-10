@@ -24,6 +24,7 @@ class AppStrings {
   static const String unAuthorized = 'User is unauthorised, Try again later';
   static const String noFound = 'Source not found';
   static const String genericError = 'Some thing want wrong, Try again later';
+  static const String invalidateCredential = 'invalid_credentials';
   static const String timeOut = 'Time out error, Try again later';
   static const String cancel = 'Request was cancelled, Try again later';
   static const String cacheError = 'cache error, Try again later';

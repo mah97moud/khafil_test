@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class Type extends Equatable {
+class TypeRM extends Equatable {
   final int? value;
   final String? label;
 
-  const Type({this.value, this.label});
+  const TypeRM({this.value, this.label});
 
-  factory Type.fromJson(Map<String, dynamic> json) => Type(
+  factory TypeRM.fromJson(Map<String, dynamic> json) => TypeRM(
         value: json['value'] as int?,
         label: json['label'] as String?,
       );
