@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:khafil_test/core/validators/first_name.dart';
+import 'package:khafil_test/core/validators/name.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_field.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 

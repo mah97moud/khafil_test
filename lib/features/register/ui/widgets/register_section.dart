@@ -52,10 +52,12 @@ class RegisterSection extends StatelessWidget {
                       width: 160.0,
                       onPressed: () {
                         onStepReached?.call(activeStep);
+                        context.read<RegisterCubit>().onNextPressed();
                       },
                     ),
                   ],
                 ),
+                const Sizes.h32(),
               ],
             ),
           );

@@ -58,6 +58,9 @@ class LoginView extends StatelessWidget {
             child: Sizes.h24(),
           ),
           const DontHaveAccountBtn(),
+          const SliverToBoxAdapter(
+            child: Sizes.h56(),
+          )
         ],
       ),
     );

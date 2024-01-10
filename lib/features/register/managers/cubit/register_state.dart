@@ -13,7 +13,7 @@ class RegisterState extends Equatable {
     required this.userType,
   });
 
-  final FirstName firstName;
+  final Name firstName;
   final String lastName;
   final String email;
   final String password;
@@ -24,7 +24,7 @@ class RegisterState extends Equatable {
 
   factory RegisterState.initial() {
     return const RegisterState(
-      firstName: FirstName.unValidated(),
+      firstName: Name.unValidated(),
       lastName: '',
       email: '',
       password: '',
@@ -46,7 +46,7 @@ class RegisterState extends Equatable {
       ];
 
   RegisterState copyWith({
-    FirstName? firstName,
+    Name? firstName,
     String? lastName,
     String? email,
     String? password,
@@ -62,7 +62,7 @@ class RegisterState extends Equatable {
       password: password ?? this.password,
       confirmPassword: confirmPassword ?? this.confirmPassword,
       userType: userType ?? this.userType,
-      submissionStatus: submissionStatus ?? this.submissionStatus,
+      submissionStatus: submissionStatus ?? SubmissionStatus.initial,
       error: error,
     );
   }

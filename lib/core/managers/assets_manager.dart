@@ -8,6 +8,7 @@ class SvgsManager {
   static const String facebook = '$svgsPath/facebook.svg';
   static const String linkedin = '$svgsPath/linkedin.svg';
   static const String twitter = '$svgsPath/twitter.svg';
+  static const String info = '$svgsPath/Info.svg';
 }
 
 class ImagesManager {

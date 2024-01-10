@@ -1,8 +1,8 @@
 import 'package:formz/formz.dart';
 
-class FirstName extends FormzInput<String, FirstNameValidationError> {
-  const FirstName.unValidated([String value = '']) : super.pure(value);
-  const FirstName.validated([String value = '']) : super.dirty(value);
+class Name extends FormzInput<String, FirstNameValidationError> {
+  const Name.unValidated([String value = '']) : super.pure(value);
+  const Name.validated([String value = '']) : super.dirty(value);
 
   @override
   FirstNameValidationError? validator(String value) {
