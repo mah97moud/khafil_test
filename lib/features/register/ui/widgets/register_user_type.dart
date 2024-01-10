@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khafil_test/core/app/di.dart';
+import 'package:khafil_test/features/register/managers/cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 
 import '../../../../core/managers/colors_manager.dart';
@@ -26,24 +28,31 @@ class RegisterUserType extends StatelessWidget {
             ),
           ),
           height: 56,
-          child: DropdownButtonFormField<int>(
-            decoration: const InputDecoration(
-              fillColor: ColorsManager.grey50,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 16.0,
-              ),
-            ),
-            icon: const Icon(Icons.keyboard_arrow_down_rounded),
-            items: types
-                .map(
-                  (e) => DropdownMenuItem<int>(
-                    value: e.value,
-                    child: Text(e.label),
+          child: BlocBuilder<RegisterCubit, RegisterState>(
+            buildWhen: (previous, current) =>
+                previous.userType != current.userType,
+            builder: (context, state) {
+              return DropdownButtonFormField<int>(
+                decoration: const InputDecoration(
+                  fillColor: ColorsManager.grey50,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 16.0,
                   ),
-                )
-                .toList(),
-            onChanged: (value) {},
+                ),
+                icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                items: types
+                    .map(
+                      (e) => DropdownMenuItem<int>(
+                        value: e.value,
+                        child: Text(e.label),
+                      ),
+                    )
+                    .toList(),
+                onChanged: 
+                    context.read<RegisterCubit>().onUserTypeChanged,
+              );
+            },
           ),
         )
       ],

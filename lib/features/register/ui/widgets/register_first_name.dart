@@ -56,7 +56,7 @@ class _RegisterFirstNameState extends State<RegisterFirstName> {
                 focusNode: _firstNameFocusNode,
                 error: firstNameError == null
                     ? null
-                    : (firstNameError == FirstNameValidationError.empty
+                    : (firstNameError == NameValidationError.empty
                         ? null
                         : 'Please enter a valid first name'),
                 onChanged: cubit.onFirstNameChanged,

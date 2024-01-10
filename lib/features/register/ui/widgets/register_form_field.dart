@@ -11,6 +11,9 @@ class RegisterFormField extends StatelessWidget {
     this.focusNode,
     this.onChanged,
     this.error,
+    this.onTapSuffixIcon,
+    this.keyboardType,
+    this.textInputAction,
   });
 
   final TextEditingController? controller;
@@ -20,9 +23,11 @@ class RegisterFormField extends StatelessWidget {
   final int? maxLines;
   final FocusNode? focusNode;
   final void Function(String text)? onChanged;
+  final VoidCallback? onTapSuffixIcon;
 
   final String? error;
-
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,6 +35,8 @@ class RegisterFormField extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
       child: TextFormField(
         controller: controller,
+        keyboardType: keyboardType ?? TextInputType.text,
+        textInputAction: textInputAction ?? TextInputAction.next,
         focusNode: focusNode,
         obscureText: obscureText ?? false,
         onTapOutside: (details) {
@@ -40,7 +47,13 @@ class RegisterFormField extends StatelessWidget {
         maxLines: obscureText == true ? 1 : maxLines,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: suffixIcon,
+          suffixIcon: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 24.0, maxWidth: 24.0),
+            child: InkWell(
+              onTap: onTapSuffixIcon,
+              child: suffixIcon,
+            ),
+          ),
           errorText: error,
         ),
       ),

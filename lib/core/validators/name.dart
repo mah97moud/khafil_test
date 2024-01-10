@@ -1,19 +1,19 @@
 import 'package:formz/formz.dart';
 
-class Name extends FormzInput<String, FirstNameValidationError> {
+class Name extends FormzInput<String, NameValidationError> {
   const Name.unValidated([String value = '']) : super.pure(value);
   const Name.validated([String value = '']) : super.dirty(value);
 
   @override
-  FirstNameValidationError? validator(String value) {
+  NameValidationError? validator(String value) {
     if (value.isEmpty) {
-      return FirstNameValidationError.empty;
+      return NameValidationError.empty;
     } else if (value.length > 50) {
-      return FirstNameValidationError.invalid;
+      return NameValidationError.invalid;
     } else {
       return null;
     }
   }
 }
 
-enum FirstNameValidationError { empty, invalid }
+enum NameValidationError { empty, invalid }

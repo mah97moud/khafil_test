@@ -43,7 +43,7 @@ class _RegisterViewState extends State<RegisterView> {
               // TODO: Navigate to Login
             } else if (state.submissionStatus == SubmissionStatus.error) {
               // TODO: Show Error
-            } else if (state.submissionStatus == SubmissionStatus.submitting) {
+            } else if (state.submissionStatus == SubmissionStatus.inProgress) {
               // TODO: Show Loading
             }
           },

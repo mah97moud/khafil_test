@@ -3,6 +3,8 @@ part of 'register_cubit.dart';
 
 class RegisterState extends Equatable {
   const RegisterState({
+    required this.securePassword,
+    required this.secureConfirmPassword,
     required this.submissionStatus,
     required this.error,
     required this.firstName,
@@ -14,10 +16,12 @@ class RegisterState extends Equatable {
   });
 
   final Name firstName;
-  final String lastName;
-  final String email;
-  final String password;
-  final String confirmPassword;
+  final Name lastName;
+  final Email email;
+  final Password password;
+  final bool? securePassword;
+  final PasswordConfirmation confirmPassword;
+  final bool? secureConfirmPassword;
   final int userType;
   final SubmissionStatus? submissionStatus;
   final String? error;
@@ -25,32 +29,39 @@ class RegisterState extends Equatable {
   factory RegisterState.initial() {
     return const RegisterState(
       firstName: Name.unValidated(),
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      userType: 0,
-      submissionStatus: SubmissionStatus.initial,
+      lastName: Name.unValidated(),
+      email: Email.unValidated(),
+      password: Password.unValidated(),
+      securePassword: true,
+      confirmPassword: PasswordConfirmation.unValidated(),
+      secureConfirmPassword: true,
+      userType: -1,
+      submissionStatus: SubmissionStatus.idle,
       error: '',
     );
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         firstName,
         lastName,
         email,
         password,
+        securePassword,
         confirmPassword,
+        secureConfirmPassword,
         userType,
+        submissionStatus,
       ];
 
   RegisterState copyWith({
     Name? firstName,
-    String? lastName,
-    String? email,
-    String? password,
-    String? confirmPassword,
+    Name? lastName,
+    Email? email,
+    Password? password,
+    bool? securePassword,
+    PasswordConfirmation? confirmPassword,
+    bool? secureConfirmPassword,
     int? userType,
     SubmissionStatus? submissionStatus,
     String? error,
@@ -60,17 +71,19 @@ class RegisterState extends Equatable {
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
       password: password ?? this.password,
+      securePassword: securePassword ?? this.securePassword,
       confirmPassword: confirmPassword ?? this.confirmPassword,
+      secureConfirmPassword: secureConfirmPassword ?? this.secureConfirmPassword,
       userType: userType ?? this.userType,
-      submissionStatus: submissionStatus ?? SubmissionStatus.initial,
+      submissionStatus: submissionStatus ?? SubmissionStatus.idle,
       error: error,
     );
   }
 }
 
 enum SubmissionStatus {
-  initial,
-  submitting,
+  idle,
+  inProgress,
   success,
   error,
 }
