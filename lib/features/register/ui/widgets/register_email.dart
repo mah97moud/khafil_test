@@ -5,7 +5,7 @@ import 'package:khafil_test/features/register/ui/widgets/register_form_field.dar
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 
 import '../../../../core/validators/email.dart';
-import '../../managers/cubit/register_cubit.dart';
+import '../../managers/register_cubit/register_cubit.dart';
 
 class RegisterEmail extends StatefulWidget {
   const RegisterEmail({

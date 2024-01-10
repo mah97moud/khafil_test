@@ -5,7 +5,7 @@ import 'package:khafil_test/core/managers/assets_manager.dart';
 import 'package:khafil_test/core/managers/colors_manager.dart';
 import 'package:khafil_test/core/managers/styles_manager.dart';
 import 'package:khafil_test/features/common/sizes.dart';
-import 'package:khafil_test/features/register/managers/cubit/register_cubit.dart';
+import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 
 class RegisterErrorContainer extends StatelessWidget {
   const RegisterErrorContainer({

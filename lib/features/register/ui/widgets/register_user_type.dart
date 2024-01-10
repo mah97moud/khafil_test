@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khafil_test/core/app/di.dart';
-import 'package:khafil_test/features/register/managers/cubit/register_cubit.dart';
+import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 
 import '../../../../core/managers/colors_manager.dart';

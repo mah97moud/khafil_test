@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
-import 'package:khafil_test/features/register/managers/cubit/register_cubit.dart';
+import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 
 import '../../features/home/ui/home_view.dart';

@@ -4,7 +4,7 @@ import 'package:khafil_test/features/register/ui/widgets/register_form_field.dar
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 
 import '../../../../core/validators/password.dart';
-import '../../managers/cubit/register_cubit.dart';
+import '../../managers/register_cubit/register_cubit.dart';
 
 class RegisterPassword extends StatefulWidget {
   const RegisterPassword({

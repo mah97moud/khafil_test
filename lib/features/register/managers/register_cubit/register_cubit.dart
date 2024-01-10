@@ -189,12 +189,24 @@ class RegisterCubit extends Cubit<RegisterState> {
       email: email,
       password: password,
       confirmPassword: confirmPassword,
-      submissionStatus: SubmissionStatus.error,
+      submissionStatus: SubmissionStatus.validatingForm,
       error: 'Fill the required fields',
     );
     emit(newState);
     if (!isFormValid) {
-      return;
+      emit(
+        newState.copyWith(
+          submissionStatus: SubmissionStatus.inValid,
+          error: 'Fill the required fields',
+        ),
+      );
+    } else {
+      emit(
+        newState.copyWith(
+          submissionStatus: SubmissionStatus.valid,
+          stepperStatus: StepperStatus.next,
+        ),
+      );
     }
   }
 }

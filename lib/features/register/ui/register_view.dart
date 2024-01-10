@@ -13,7 +13,8 @@ import 'package:khafil_test/features/register/ui/widgets/register_skills.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_stepper.dart';
 import 'package:khafil_test/features/register/ui/widgets/select_avatar.dart';
 
-import '../managers/cubit/register_cubit.dart';
+import '../managers/register_cubit/register_cubit.dart';
+import '../managers/stepper_cubit/stepper_cubit.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -23,82 +24,72 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  int activeStep = 1;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Register',
+    return BlocProvider(
+      create: (context) => StepperCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Register',
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        child: BlocConsumer<RegisterCubit, RegisterState>(
-          listener: (context, state) {
-            if (state.submissionStatus == SubmissionStatus.success) {
-              // TODO: Navigate to Login
-            } else if (state.submissionStatus == SubmissionStatus.error) {
-              // TODO: Show Error
-            } else if (state.submissionStatus == SubmissionStatus.inProgress) {
-              // TODO: Show Loading
-            }
-          },
-          builder: (context, state) {
-            final readRegisterCubit = context.read<RegisterCubit>();
-            var error = state.error;
-            debugPrint('Current State: $state');
-            return CustomScrollView(
-              slivers: [
-                if (error != null && error.isNotEmpty) const RegisterErrorContainer(),
-                const SliverToBoxAdapter(
-                  child: Sizes.h32(),
-                ),
-                RegisterStepper(
-                  activeStep: activeStep,
-                  onStepReached: (index) {
-                    debugPrint('Active Step: $index');
-                    setState(() => activeStep = index);
-                  },
-                ),
-                if (activeStep == 1)
-                  RegisterSection(
-                    activeStep: activeStep,
-                    onStepReached: (index) {
-                      if (readRegisterCubit.isFormValid) {
-                        setState(() {
-                          activeStep = index + 1;
-                        });
-                      }
-                    },
-                  ),
-                if (activeStep == 2)
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        const SelectAvatar(),
-                        const RegisterAbout(),
-                        const RegisterSalary(),
-                        const RegisterSelectDate(),
-                        const RegisterGender(),
-                        const RegisterSkills(),
-                        const RegisterFavSocialMedia(),
-                        const Sizes.h32(),
-                        DefaultBtn(
-                          'Submit',
-                          width: double.infinity,
-                          onPressed: () {},
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: BlocConsumer<RegisterCubit, RegisterState>(
+            listener: (context, state) {
+              if (state.submissionStatus == SubmissionStatus.success) {
+                // TODO: Navigate to Login
+              } else if (state.submissionStatus == SubmissionStatus.error) {
+                // TODO: Show Error
+              } else if (state.submissionStatus ==
+                  SubmissionStatus.inProgress) {
+                // TODO: Show Loading
+              }  
+            },
+            builder: (context, state) {
+              var error = state.error;
+              debugPrint('Current State: $state');
+              return BlocBuilder<StepperCubit, int>(
+                builder: (context, activeStep) {
+                  return CustomScrollView(
+                    slivers: [
+                      if (error != null && error.isNotEmpty)
+                        const RegisterErrorContainer(),
+                      const SliverToBoxAdapter(
+                        child: Sizes.h32(),
+                      ),
+                      const RegisterStepper(),
+                      if (activeStep == 1) const RegisterSection(),
+                      if (activeStep == 2)
+                        SliverToBoxAdapter(
+                          child: Column(
+                            children: [
+                              const SelectAvatar(),
+                              const RegisterAbout(),
+                              const RegisterSalary(),
+                              const RegisterSelectDate(),
+                              const RegisterGender(),
+                              const RegisterSkills(),
+                              const RegisterFavSocialMedia(),
+                              const Sizes.h32(),
+                              DefaultBtn(
+                                'Submit',
+                                width: double.infinity,
+                                onPressed: () {},
+                              ),
+                              const Sizes.h84(),
+                            ],
+                          ),
                         ),
-                        const Sizes.h84(),
-                      ],
-                    ),
-                  ),
-              ],
-            );
-          },
+                    ],
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

@@ -3,6 +3,7 @@ part of 'register_cubit.dart';
 
 class RegisterState extends Equatable {
   const RegisterState({
+    required this.stepperStatus,
     required this.securePassword,
     required this.secureConfirmPassword,
     required this.submissionStatus,
@@ -25,6 +26,7 @@ class RegisterState extends Equatable {
   final int userType;
   final SubmissionStatus? submissionStatus;
   final String? error;
+  final StepperStatus? stepperStatus;
 
   factory RegisterState.initial() {
     return const RegisterState(
@@ -38,6 +40,7 @@ class RegisterState extends Equatable {
       userType: -1,
       submissionStatus: SubmissionStatus.idle,
       error: '',
+      stepperStatus: StepperStatus.idle,
     );
   }
 
@@ -52,6 +55,7 @@ class RegisterState extends Equatable {
         secureConfirmPassword,
         userType,
         submissionStatus,
+        stepperStatus,
       ];
 
   RegisterState copyWith({
@@ -65,6 +69,7 @@ class RegisterState extends Equatable {
     int? userType,
     SubmissionStatus? submissionStatus,
     String? error,
+    StepperStatus? stepperStatus,
   }) {
     return RegisterState(
       firstName: firstName ?? this.firstName,
@@ -77,13 +82,22 @@ class RegisterState extends Equatable {
       userType: userType ?? this.userType,
       submissionStatus: submissionStatus ?? SubmissionStatus.idle,
       error: error,
+      stepperStatus: stepperStatus ?? StepperStatus.idle,
     );
   }
 }
 
 enum SubmissionStatus {
   idle,
+  validatingForm,
+  valid,
+  inValid,
   inProgress,
   success,
   error,
+}
+
+enum StepperStatus {
+  idle,
+  next,
 }

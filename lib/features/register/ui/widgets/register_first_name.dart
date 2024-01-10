@@ -4,7 +4,7 @@ import 'package:khafil_test/core/validators/name.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_field.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 
-import '../../managers/cubit/register_cubit.dart';
+import '../../managers/register_cubit/register_cubit.dart';
 
 class RegisterFirstName extends StatefulWidget {
   const RegisterFirstName({
