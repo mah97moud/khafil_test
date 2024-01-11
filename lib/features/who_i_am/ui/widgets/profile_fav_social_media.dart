@@ -8,8 +8,10 @@ import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart
 
 class ProfileFavSocialMedia extends StatelessWidget {
   const ProfileFavSocialMedia({
-    super.key,
+    super.key, this.favoriteSocialMedia,
   });
+
+  final List<String>? favoriteSocialMedia;
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +22,19 @@ class ProfileFavSocialMedia extends StatelessWidget {
         const Sizes.h16(),
         RegisterCustomCheckbox(
           assetSvg: SvgsManager.facebook,
-          value: true,
+          value: favoriteSocialMedia?.contains('facebook') ?? false,  
           title: 'Facebook',
           onChanged: (selected) {},
         ),
         RegisterCustomCheckbox(
           assetSvg: SvgsManager.twitter,
-          value: true,
+          value: favoriteSocialMedia?.contains('x') ?? false,
           title: 'Twitter',
           onChanged: (selected) {},
         ),
         RegisterCustomCheckbox(
           assetSvg: SvgsManager.linkedin,
-          value: false,
+          value: favoriteSocialMedia?.contains('linkedin') ?? false,
           icon: Container(
             height: 20.0,
             width: 20.0,

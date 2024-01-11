@@ -9,12 +9,13 @@ class ProfileInfoContainer extends StatelessWidget {
   const ProfileInfoContainer({
     super.key,
     required this.title,
-    required this.name, this.trailing,
+    required this.name,
+    this.trailing,
   });
 
   final String title;
   final String name;
-  final Widget? trailing; 
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {

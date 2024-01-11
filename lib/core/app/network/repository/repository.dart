@@ -3,6 +3,7 @@ import 'package:khafil_test/features/home/data/models/country_model/datum.dart';
 
 import '../../../../features/login/data/models/login_model/login_model.dart';
 import '../../../../features/services/data/models/service_model/datum.dart';
+import '../../../../features/who_i_am/data/model/who_i_am_model/data.dart';
 import '../../../helpers/result.dart';
 
 abstract class Repository {
@@ -29,4 +30,9 @@ abstract class Repository {
   Future<Result<List<Service>, Exception>> popularServices() {
     throw UnimplementedError();
   }
+
+  Future<Result<WhoIAm, Exception>> whoAmI() {
+    throw UnimplementedError();
+  }
+
 }

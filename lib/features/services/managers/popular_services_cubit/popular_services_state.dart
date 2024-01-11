@@ -8,12 +8,10 @@ sealed class PopularServicesState extends Equatable {
 }
 
 final class PopularServicesInitial extends PopularServicesState {
-
   const PopularServicesInitial();
 }
 
 final class PopularServicesLoading extends PopularServicesState {
-   
   const PopularServicesLoading();
 }
 

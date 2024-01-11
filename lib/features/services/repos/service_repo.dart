@@ -48,8 +48,8 @@ class ServiceRepo extends Repository {
   }
 
   @override
-  Future<Result<List<Service>, Exception>> popularServices() async{
-     final isConnected = await _networkInfo.isConnected;
+  Future<Result<List<Service>, Exception>> popularServices() async {
+    final isConnected = await _networkInfo.isConnected;
 
     if (!isConnected) {
       return Failure(

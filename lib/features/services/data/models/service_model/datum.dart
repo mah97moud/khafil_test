@@ -17,5 +17,6 @@ class Service with _$Service {
     bool? recommended,
   }) = _Datum;
 
-  factory Service.fromJson(Map<String, dynamic> json) => _$ServiceFromJson(json);
+  factory Service.fromJson(Map<String, dynamic> json) =>
+      _$ServiceFromJson(json);
 }

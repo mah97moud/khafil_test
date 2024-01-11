@@ -31,7 +31,7 @@ class ServiceCard extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             children: [
               Image.network(
-                service.mainImage ?? '', 
+                service.mainImage ?? '',
                 fit: BoxFit.cover,
               ),
               AppDefaultContainer(
@@ -43,7 +43,7 @@ class ServiceCard extends StatelessWidget {
                   vertical: 6.0,
                 ),
                 child: Text(
-                  '\$${service.price}', 
+                  '\$${service.price}',
                   style: StylesManager.textStyle12.copyWith(
                     color: ColorsManager.white,
                   ),
@@ -52,10 +52,10 @@ class ServiceCard extends StatelessWidget {
             ],
           ),
           const Sizes.h8(),
-            SizedBox(
+          SizedBox(
             width: 136,
             child: Text(
-               service.title ?? '', 
+              service.title ?? '',
               style: StylesManager.textStyle11,
             ),
           ),
@@ -69,7 +69,7 @@ class ServiceCard extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    '(${service.averageRating ?? ''})', 
+                    '(${service.averageRating ?? ''})',
                     style: StylesManager.textStyle11.copyWith(
                       color: ColorsManager.yellow,
                     ),
@@ -88,8 +88,8 @@ class ServiceCard extends StatelessWidget {
                   const Sizes(
                     width: 4,
                   ),
-                    Text(
-                    '(${service.completedSalesCount  ?? ''})', 
+                  Text(
+                    '(${service.completedSalesCount ?? ''})',
                     style: StylesManager.textStyle12,
                   ),
                 ],

@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../../../features/home/data/models/country_model/country_model.dart';
 import '../../../../features/login/data/responses/login_r_m/login_r_m.dart';
 import '../../../../features/services/data/models/service_model/service_model.dart';
+import '../../../../features/who_i_am/data/model/who_i_am_model/who_i_am_model.dart';
 import '../../data/remote_models/dependency_r_m/dependency_r_m.dart';
 import '../app_service_client.dart';
 
@@ -37,8 +38,10 @@ abstract class AppSource {
     required int page,
   });
 
-    
   Future<ServiceModel> services();
 
   Future<ServiceModel> popularServices();
+
+  Future<WhoIAmModel> whoAmI();
+
 }

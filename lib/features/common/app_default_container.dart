@@ -8,7 +8,9 @@ class AppDefaultContainer extends StatelessWidget {
     required this.child,
     this.color,
     this.borderRadius,
-    this.padding, this.margin, this.width,
+    this.padding,
+    this.margin,
+    this.width,
   }) : super(key: key);
 
   final Widget child;

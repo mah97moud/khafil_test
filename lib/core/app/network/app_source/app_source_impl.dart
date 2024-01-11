@@ -54,4 +54,9 @@ class AppSourceImpl implements AppSource {
   Future<ServiceModel> services() async {
     return await _appServiceClient.services();
   }
+
+  @override
+  Future<WhoIAmModel> whoAmI() async {
+    return await _appServiceClient.whoAmI();
+  }
 }

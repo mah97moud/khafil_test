@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:khafil_test/core/managers/styles_manager.dart';
 import 'package:khafil_test/features/common/sizes.dart';
 
-class UserTypeWidget extends StatefulWidget {
+class UserTypeWidget extends StatelessWidget {
   const UserTypeWidget({
     super.key,
+    this.type,
   });
 
-  @override
-  State<UserTypeWidget> createState() => _UserTypeWidgetState();
-}
-
-class _UserTypeWidgetState extends State<UserTypeWidget> {
-  int groupValue = 0;
+  final type;
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +24,16 @@ class _UserTypeWidgetState extends State<UserTypeWidget> {
           children: [
             InkWell(
               onTap: () {
-                _onChanged(0);
+                // _onChanged(0);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Radio<int>(
                     value: 0,
-                    groupValue: groupValue,
+                    groupValue: type,
                     onChanged: (newValue) {
-                      _onChanged(newValue!);
+                      // _onChanged(newValue!);
                     },
                   ),
                   const Text('Seller'),
@@ -46,16 +42,16 @@ class _UserTypeWidgetState extends State<UserTypeWidget> {
             ),
             InkWell(
               onTap: () {
-                _onChanged(1);
+                // _onChanged(1);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Radio<int>(
                     value: 1,
-                    groupValue: groupValue,
+                    groupValue: type,
                     onChanged: (newValue) {
-                      _onChanged(newValue!);
+                      // _onChanged(newValue!);
                     },
                   ),
                   const Text('Buyer'),
@@ -64,16 +60,16 @@ class _UserTypeWidgetState extends State<UserTypeWidget> {
             ),
             InkWell(
               onTap: () {
-                _onChanged(2);
+                // _onChanged(2);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Radio<int>(
                     value: 2,
-                    groupValue: groupValue,
+                    groupValue: type,
                     onChanged: (newValue) {
-                      _onChanged(newValue!);
+                      // _onChanged(newValue!);
                     },
                   ),
                   const Text('Both'),
@@ -86,9 +82,9 @@ class _UserTypeWidgetState extends State<UserTypeWidget> {
     );
   }
 
-  void _onChanged(int value) {
-    setState(() {
-      groupValue = value;
-    });
-  }
+  // void _onChanged(int value) {
+  //   setState(() {
+  //     groupValue = value;
+  //   });
+  // }
 }

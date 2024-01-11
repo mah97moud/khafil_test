@@ -18,6 +18,8 @@ import '../../features/login/managers/login_cubit/login_cubit.dart';
 import '../../features/login/ui/login_view.dart';
 import '../../features/services/repos/service_repo.dart';
 import '../../features/services/ui/services_view.dart';
+import '../../features/who_i_am/managers/who_i_am_cubit/who_i_am_cubit.dart';
+import '../../features/who_i_am/repos/who_i_am_repo.dart';
 import '../../features/who_i_am/ui/who_i_am_view.dart';
 import '../app/di.dart';
 import '../app/network/app_pref.dart';
@@ -126,8 +128,13 @@ class RoutesManager {
                 path: '/${RoutesNames.whoIAm}',
                 name: RoutesNames.whoIAm,
                 pageBuilder: (context, state) {
-                  return const NoTransitionPage(
-                    child: WhoIAmView(),
+                  return   NoTransitionPage(
+                    child: BlocProvider(
+                      create: (context) => WhoIAmCubit(
+                        di<WhoIAmRepo>(),
+                      )..whoAmI(), 
+                      child: const WhoIAmView(),
+                    ),
                   );
                 },
               ),

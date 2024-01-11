@@ -21,8 +21,7 @@ class PopularServicesSection extends StatelessWidget {
           ),
           SizedBox(
             height: 192.0,
-            child:
-                BlocBuilder<PopularServicesCubit, PopularServicesState>(
+            child: BlocBuilder<PopularServicesCubit, PopularServicesState>(
               builder: (context, state) {
                 return switch (state) {
                   PopularServicesInitial() => const SizedBox.shrink(),
@@ -39,8 +38,7 @@ class PopularServicesSection extends StatelessWidget {
                         );
                       },
                     ),
-                  PopularServicesError() =>
-                    Center(child: Text(state.error)),
+                  PopularServicesError() => Center(child: Text(state.error)),
                 };
               },
             ),
