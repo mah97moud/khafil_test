@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
 import 'package:khafil_test/features/register/ui/widgets/skill_chip.dart';
 
 import '../../../../core/app/di.dart';
 import '../../../../core/managers/colors_manager.dart';
+import '../../managers/register_cubit/register_cubit.dart';
 
 class RegisterSkills extends StatelessWidget {
   const RegisterSkills({
@@ -31,11 +33,29 @@ class RegisterSkills extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          child: SingleChildScrollView(
-            child: Wrap(
-              spacing: 10.0,
-              children: tags.map((e) => SkillChip(title: e.label)).toList(),
-            ),
+          child: BlocBuilder<RegisterCubit, RegisterState>(
+            builder: (context, state) {
+              final skills = state.skills;
+              return SingleChildScrollView(
+                child: Wrap(
+                  spacing: 10.0,
+                  children: tags
+                      .map(
+                        (e) => SkillChip(
+                          title: e.label,
+                          isSelected: skills.contains(e.value),
+                          delete: () {
+                            context.read<RegisterCubit>().removeSkill(e.value);
+                          },
+                          add: () {
+                            context.read<RegisterCubit>().addSkill(e.value);
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
+              );
+            },
           ),
         ),
       ],

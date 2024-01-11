@@ -38,8 +38,14 @@ class ProfileSkills extends StatelessWidget {
           child: SingleChildScrollView(
             child: Wrap(
               spacing: 10.0,
-              children:
-                  tags.map((e) => SkillChip(title: e.name ?? '')).toList(),
+              children: tags
+                  .map(
+                    (e) => SkillChip(
+                      title: e.name ?? '',
+                      isSelected: true,
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ),

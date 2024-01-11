@@ -18,6 +18,9 @@ class RegisterState extends Equatable {
     required this.about,
     required this.salary,
     required this.date,
+    required this.gender,
+    required this.skills,
+    required this.socials,
   });
 
   final Name firstName;
@@ -36,6 +39,9 @@ class RegisterState extends Equatable {
   final About about;
   final int salary;
   final String date;
+  final int gender;
+  final List<int> skills;
+  final List<String> socials;
 
   factory RegisterState.initial() {
     return const RegisterState(
@@ -54,6 +60,9 @@ class RegisterState extends Equatable {
       about: About.unValidated(),
       salary: 100,
       date: '',
+      gender: 0,
+      skills: [],
+      socials: [],
     );
   }
 
@@ -73,6 +82,9 @@ class RegisterState extends Equatable {
         about,
         salary,
         date,
+        gender,
+        skills,
+        socials,
       ];
 
   RegisterState copyWith({
@@ -91,6 +103,9 @@ class RegisterState extends Equatable {
     About? about,
     int? salary,
     String? date,
+    int? gender,
+    List<int>? skills,
+    List<String>? socials,
   }) {
     return RegisterState(
       firstName: firstName ?? this.firstName,
@@ -109,6 +124,9 @@ class RegisterState extends Equatable {
       about: about ?? this.about,
       salary: salary ?? this.salary,
       date: date ?? this.date,
+      gender: gender ?? this.gender,
+      skills: skills ?? this.skills,
+      socials: socials ?? this.socials,
     );
   }
 }

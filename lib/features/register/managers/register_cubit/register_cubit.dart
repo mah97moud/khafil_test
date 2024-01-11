@@ -196,7 +196,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(newState);
   }
 
-   void onSalaryChanged(int newValue) {
+  void onSalaryChanged(int newValue) {
     final newState = state.copyWith(salary: newValue);
     emit(newState);
   }
@@ -213,6 +213,31 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void onDateChanged(String newValue) {
     final newState = state.copyWith(date: newValue);
+    emit(newState);
+  }
+
+  void onGenderChanged(int? newValue) {
+    final newState = state.copyWith(gender: newValue);
+    emit(newState);
+  }
+
+  void addSkill(int skillId) {
+    final newState = state.copyWith(skills: {...state.skills, skillId}.toList()); 
+    emit(newState);
+  }
+
+  void removeSkill(int skillId) {
+    final newState = state.copyWith(skills: [...state.skills]..remove(skillId));
+    emit(newState);
+  }
+
+  void addSocial(String newValue) {
+    final newState = state.copyWith(socials: {...state.socials, newValue}.toList());
+    emit(newState);
+  }
+
+  void removeSocial(String newValue) {
+    final newState = state.copyWith(socials: [...state.socials]..remove(newValue));
     emit(newState);
   }
 
