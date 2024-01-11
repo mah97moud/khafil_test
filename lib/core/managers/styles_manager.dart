@@ -5,6 +5,16 @@ class StylesManager {
   const StylesManager._();
 
   ///text style
+  /// text size 11
+  /// text weight FontWeight.w500
+  /// text color ColorsManager.black
+  static const TextStyle textStyle11 = TextStyle(
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.black,
+    fontSize: 11,
+  );
+
+  ///text style
   /// text size 12
   /// text weight FontWeight.w500
   /// text color ColorsManager.grey500

@@ -12,9 +12,12 @@ class SvgsManager {
   static const String globeHemisphereWest = '$svgsPath/GlobeHemisphereWest.svg';
   static const String shoppingCartSimple = '$svgsPath/ShoppingCartSimple.svg';
   static const String userCircle = '$svgsPath/UserCircle.svg';
+  static const String bag = '$svgsPath/bag.svg';
+  static const String star = '$svgsPath/Star.svg';
 }
 
 class ImagesManager {
   const ImagesManager._();
   static const String avatar = '$imagesPath/avatar.png';
+  static const String servicePic = '$imagesPath/service_pic.png';
 }

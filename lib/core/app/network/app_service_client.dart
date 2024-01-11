@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:khafil_test/core/app/network/end_points.dart';
 import 'package:khafil_test/features/home/data/models/country_model/country_model.dart';
+import 'package:khafil_test/features/services/data/models/service_model/service_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../features/login/data/responses/login_r_m/login_r_m.dart';
@@ -48,4 +49,10 @@ abstract class AppServiceClient {
   Future<CountryModel> countries(
     @Query("page") int page,
   );
+  
+  @GET(EndPoints.service)
+  Future<ServiceModel> services();
+
+  @GET(EndPoints.popularService)
+  Future<ServiceModel> popularServices();
 }

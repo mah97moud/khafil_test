@@ -75,6 +75,12 @@ class Sizes extends SizedBox {
           height: 8.0,
           width: 0,
         );
+  const Sizes.h10({
+    super.key,
+  }) : super(
+          height: 10.0,
+          width: 0,
+        );
 
   const Sizes.w56({
     super.key,

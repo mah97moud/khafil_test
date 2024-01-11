@@ -7,6 +7,8 @@ import 'package:khafil_test/core/routes/routes_names.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
+import 'package:khafil_test/features/services/managers/popular_services_cubit/popular_services_cubit.dart';
+import 'package:khafil_test/features/services/managers/services_cubit/services_cubit.dart';
 
 import '../../features/home/managers/countries_cubit/countries_cubit.dart';
 import '../../features/home/repository/home_repo.dart';
@@ -14,6 +16,8 @@ import '../../features/home/ui/home_view.dart';
 import '../../features/home_layout/ui/home_layout.dart';
 import '../../features/login/managers/login_cubit/login_cubit.dart';
 import '../../features/login/ui/login_view.dart';
+import '../../features/services/repos/service_repo.dart';
+import '../../features/services/ui/services_view.dart';
 import '../../features/who_i_am/ui/who_i_am_view.dart';
 import '../app/di.dart';
 import '../app/network/app_pref.dart';
@@ -135,12 +139,39 @@ class RoutesManager {
                 path: '/${RoutesNames.home}',
                 name: RoutesNames.home,
                 pageBuilder: (context, state) {
-                  return   NoTransitionPage(
+                  return NoTransitionPage(
                     child: BlocProvider(
                       create: (context) => CountriesCubit(
-                        di<HomeRepo>(), 
+                        di<HomeRepo>(),
                       )..getCountries(),
                       child: const HomeView(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/${RoutesNames.services}',
+                name: RoutesNames.services,
+                pageBuilder: (context, state) {
+                  return NoTransitionPage(
+                    child: MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) => ServicesCubit(
+                            di<ServiceRepo>(),
+                          )..getServices(),
+                        ),
+                        BlocProvider(
+                          create: (context) => PopularServicesCubit(
+                            di<ServiceRepo>(),
+                          )..getPopularServices(),
+                        ),
+                      ],
+                      child: const ServicesView(),
                     ),
                   );
                 },

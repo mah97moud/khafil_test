@@ -14,6 +14,7 @@ class ColorsManager {
   static const Color linkedinBg = Color(0xff2867B2);
   static const Color error = Color(0xFFF56242);
   static const Color errorBg = Color(0xFFFFF0ED);
+  static const Color yellow = Color(0xFFFFCB30);
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
 }

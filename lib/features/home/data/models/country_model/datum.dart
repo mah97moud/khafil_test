@@ -13,7 +13,8 @@ class Country extends Equatable {
 
   const Country({this.id, this.countryCode, this.name, this.capital});
 
-  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) =>
+      _$CountryFromJson(json);
 
   Map<String, dynamic> toJson() => _$CountryToJson(this);
 

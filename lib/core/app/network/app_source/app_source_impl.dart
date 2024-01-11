@@ -44,4 +44,14 @@ class AppSourceImpl implements AppSource {
       page,
     );
   }
+
+  @override
+  Future<ServiceModel> popularServices() async {
+    return await _appServiceClient.popularServices();
+  }
+
+  @override
+  Future<ServiceModel> services() async {
+    return await _appServiceClient.services();
+  }
 }

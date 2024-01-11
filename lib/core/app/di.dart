@@ -9,6 +9,7 @@ import 'package:khafil_test/core/app/network/repository/repository.dart';
 import 'package:khafil_test/core/helpers/result.dart';
 import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
+import 'package:khafil_test/features/services/repos/service_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/home/repository/home_repo.dart';
@@ -86,8 +87,11 @@ Future<void> initDI() async {
   di.registerFactory<HomeRepo>(
     () => HomeRepo(appSource: di(), networkInfo: di()),
   );
+  di.registerFactory<ServiceRepo>(
+    () => ServiceRepo(appSource: di(), networkInfo: di()),
+  );
 
-  await getDependencies();
+  // await getDependencies();
 }
 
 Future<void> getDependencies() async {

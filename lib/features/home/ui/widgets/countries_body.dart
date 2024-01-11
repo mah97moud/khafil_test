@@ -24,7 +24,7 @@ class CountriesBody extends StatelessWidget {
               ],
             ),
           CountriesSuccess() => Expanded(
-            child: Column(
+              child: Column(
                 children: [
                   ListView.builder(
                     itemCount: state.countries.length,
@@ -59,7 +59,7 @@ class CountriesBody extends StatelessWidget {
                   const Sizes.h20(),
                 ],
               ),
-          ),
+            ),
           CountriesFailure() => Center(
               child: Text(state.message),
             ),
