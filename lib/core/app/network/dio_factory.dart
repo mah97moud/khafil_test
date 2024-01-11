@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 
 const String appJson = 'application/json';
 
@@ -19,6 +19,10 @@ class DioFactory {
   Future<Dio> get dio async {
     final dio = Dio();
 
+    final user = await SecureStorageService.getUserModel;
+    final token = user?.accessToken;
+   
+
     final Map<String, dynamic> headers = {
       contentType: appJson,
       accept: appJson,
@@ -30,13 +34,16 @@ class DioFactory {
       receiveDataWhenStatusError: true,
       followRedirects: false,
     );
-
-    if (!kReleaseMode) {
-      dio.interceptors.add(LogInterceptor(
-        responseBody: true,
-        requestBody: true,
-      ));
+     if (token != null) {
+      dio.options.headers[authorization] = 'Bearer $token';
     }
+
+    // if (!kReleaseMode) {
+    //   dio.interceptors.add(LogInterceptor(
+    //     responseBody: true,
+    //     requestBody: true,
+    //   ));
+    // }
 
     return dio;
   }
