@@ -8,7 +8,7 @@ class AppDefaultContainer extends StatelessWidget {
     required this.child,
     this.color,
     this.borderRadius,
-    this.padding, this.margin,
+    this.padding, this.margin, this.width,
   }) : super(key: key);
 
   final Widget child;
@@ -16,10 +16,12 @@ class AppDefaultContainer extends StatelessWidget {
   final double? borderRadius;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
+      width: width,
       padding: padding ??
           const EdgeInsets.symmetric(
             horizontal: 48.0,
