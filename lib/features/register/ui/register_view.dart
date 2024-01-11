@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:khafil_test/core/extensions/context_ex.dart';
 import 'package:khafil_test/features/common/default_btn.dart';
 import 'package:khafil_test/features/common/sizes.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_about.dart';
@@ -13,6 +14,8 @@ import 'package:khafil_test/features/register/ui/widgets/register_skills.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_stepper.dart';
 import 'package:khafil_test/features/register/ui/widgets/select_avatar.dart';
 
+import '../../../core/routes/routes_manager.dart';
+import '../../../core/routes/routes_names.dart';
 import '../managers/register_cubit/register_cubit.dart';
 import '../managers/stepper_cubit/stepper_cubit.dart';
 
@@ -75,10 +78,34 @@ class _RegisterViewState extends State<RegisterView> {
                               const RegisterSkills(),
                               const RegisterFavSocialMedia(),
                               const Sizes.h32(),
-                              DefaultBtn(
-                                'Submit',
-                                width: double.infinity,
-                                onPressed: () {},
+                              BlocConsumer<RegisterCubit, RegisterState>(
+                                listener: (context, state) {
+                                  if (state.submissionStatus ==
+                                      SubmissionStatus.success) {
+                                    debugPrint('Login Success');
+                                    RoutesManager.pushReplacementNamed(
+                                        RoutesNames.login);
+                                    context.hideSnackBar();
+                                  } else if (state.submissionStatus ==
+                                      SubmissionStatus.error) {
+                                    context.showSnackBar(state.error ?? '');
+                                  } else if (state.submissionStatus ==
+                                      SubmissionStatus.inProgress) {
+                                    context.showLoadingSnackBar(
+                                        'Login in progress...');
+                                  }
+                                },
+                                builder: (context, state) {
+                                  return DefaultBtn(
+                                    'Submit',
+                                    width: double.infinity,
+                                    onPressed: () {
+                                      context
+                                          .read<RegisterCubit>()
+                                          .submit();
+                                    },
+                                  );
+                                },
                               ),
                               const Sizes.h84(),
                             ],

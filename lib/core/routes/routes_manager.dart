@@ -6,6 +6,7 @@ import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
+import 'package:khafil_test/features/register/repos/register_repo.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 import 'package:khafil_test/features/services/managers/popular_services_cubit/popular_services_cubit.dart';
 import 'package:khafil_test/features/services/managers/services_cubit/services_cubit.dart';
@@ -208,7 +209,9 @@ class RoutesManager {
             pageBuilder: (context, state) {
               return NoTransitionPage(
                 child: BlocProvider(
-                  create: (context) => RegisterCubit(),
+                  create: (context) => RegisterCubit(
+                    di<RegisterRepo>(),
+                  ),
                   child: const RegisterView(),
                 ),
               );

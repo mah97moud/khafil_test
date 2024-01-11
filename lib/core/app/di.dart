@@ -13,6 +13,7 @@ import 'package:khafil_test/features/services/repos/service_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/home/repository/home_repo.dart';
+import '../../features/register/repos/register_repo.dart';
 import '../../features/who_i_am/repos/who_i_am_repo.dart';
 import '../helpers/cache_helper.dart';
 import 'data/models/dependency_model/tag.dart';
@@ -120,8 +121,11 @@ Future<void> initDI() async {
   di.registerFactory<WhoIAmRepo>(
     () => WhoIAmRepo(appSource: di(), networkInfo: di()),
   );
+  di.registerFactory<RegisterRepo>(
+    () => RegisterRepo(appSource: di(), networkInfo: di()),
+  );
 
-  // await getDependencies();
+  await getDependencies();
 }
 
 Future<void> getDependencies() async {

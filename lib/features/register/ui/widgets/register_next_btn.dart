@@ -16,11 +16,11 @@ class RegisterNextBtn extends StatelessWidget {
       children: [
         BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
-          //   final stepperStatus = state.stepperStatus;
-          //   debugPrint('Current Stepper Status: $stepperStatus');
-          //   if (state.stepperStatus == StepperStatus.next) {
-          //     context.read<StepperCubit>().nextStep();
-          //   }
+            final stepperStatus = state.stepperStatus;
+            debugPrint('Current Stepper Status: $stepperStatus');
+            if (state.stepperStatus == StepperStatus.next) {
+              context.read<StepperCubit>().nextStep();
+            }
           },
           builder: (context, state) =>
               state.submissionStatus == SubmissionStatus.validatingForm
@@ -34,9 +34,9 @@ class RegisterNextBtn extends StatelessWidget {
                       width: 160.0,
                       onPressed: () {
                         var readRegisterCubit = context.read<RegisterCubit>();
-              context.read<StepperCubit>().nextStep();
+                        // context.read<StepperCubit>().nextStep();
 
-                        // readRegisterCubit.onNextPressed();
+                        readRegisterCubit.onNextPressed();
                       },
                     ),
         ),
