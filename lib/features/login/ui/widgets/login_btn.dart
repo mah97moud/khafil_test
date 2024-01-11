@@ -19,7 +19,7 @@ class LoginBtn extends StatelessWidget {
         listener: (context, state) {
           if (state.status == LoginStatus.success) {
             debugPrint('Login Success');
-            RoutesManager.goNamed(RoutesNames.home);
+            RoutesManager.pushReplacementNamed(RoutesNames.home);
             context.hideSnackBar();
           } else if (state.status == LoginStatus.error) {
             context.showSnackBar(state.message ?? '');

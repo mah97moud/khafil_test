@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+import 'package:khafil_test/core/app/network/app_pref.dart';
 import 'package:khafil_test/core/helpers/result.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 
@@ -11,9 +12,10 @@ import '../../../../core/validators/password.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._repository) : super(LoginState.initial());
+  LoginCubit(this._repository, this._appPrefs) : super(LoginState.initial());
 
   final LoginRepo _repository;
+  final AppPrefs _appPrefs;
 
   void onEmailChanged(String newValue) {
     final prevEmail = state.email;
@@ -89,12 +91,14 @@ class LoginCubit extends Cubit<LoginState> {
 
         result.when(
           success: (data) {
+            rememberMe = true;
             final newState = state.copyWith(
               status: LoginStatus.success,
             );
             emit(newState);
           },
           failure: (message, ex) {
+            
             final newState = state.copyWith(
               status: LoginStatus.error,
               message: result.message,
@@ -112,5 +116,13 @@ class LoginCubit extends Cubit<LoginState> {
         emit(newState);
       }
     }
+  }
+
+  void toggleRememberMe(bool newValue) async {
+    final newState = state.copyWith(
+      rememberMe: newValue,
+    );
+    await _appPrefs.saveRememberMe(newValue);
+    emit(newState);
   }
 }

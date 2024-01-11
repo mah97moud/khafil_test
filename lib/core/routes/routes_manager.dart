@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 import 'package:khafil_test/core/helpers/types.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
@@ -12,6 +13,7 @@ import '../../features/home_layout/ui/home_layout.dart';
 import '../../features/login/managers/login_cubit/login_cubit.dart';
 import '../../features/login/ui/login_view.dart';
 import '../app/di.dart';
+import '../app/network/app_pref.dart';
 
 class RoutesManager {
   factory RoutesManager() => _instance;
@@ -131,6 +133,7 @@ class RoutesManager {
             child: BlocProvider(
               create: (_) => LoginCubit(
                 di<LoginRepo>(),
+                di<AppPrefs>(),
               ),
               child: const LoginView(),
             ),
@@ -152,33 +155,30 @@ class RoutesManager {
         ],
       ),
     ],
-    redirect: (context, state) {
+    redirect: (context, state) async {
       final bool loggingIn = state.uri.path == '/${RoutesNames.login}';
-      return null;
 
-      //Todo: check if user is logged in or not
-      // userModel = await SecureStorageService.getUserModel;
+      loginModel = await SecureStorageService.getUserModel;
 
-      // final bool loggedIn = userModel != null;
-      // const bool loggedIn = false;
+      final bool loggedIn = loginModel != null && rememberMe == true;
 
-      // if (!loggedIn) {
-      //   final bool isRegister =
-      //       state.matchedLocation.contains(RoutesNames.register);
-      //   if (isRegister) {
-      //     return '/login/${RoutesNames.register}';
-      //   }
+      if (!loggedIn) {
+        final bool isRegister =
+            state.matchedLocation.contains(RoutesNames.register);
+        if (isRegister) {
+          return '/login/${RoutesNames.register}';
+        }
 
-      //   return '/${RoutesNames.login}';
-      // }
+        return '/${RoutesNames.login}';
+      }
 
       // if the user is logged in but still on the login page, send them to
       // the home page
-      // if (loggingIn) {
-      //   return '/${RoutesNames.home}';
-      // }
+      if (loggingIn) {
+        return '/${RoutesNames.home}';
+      }
 
-      // return null;
+      return null;
     },
   );
 }
