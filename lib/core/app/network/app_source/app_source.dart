@@ -1,4 +1,6 @@
-import 'package:retrofit/retrofit.dart';
+import 'dart:io';
+
+import 'package:khafil_test/core/app/network/register_error/register_error.dart';
 
 import '../../../../features/home/data/models/country_model/country_model.dart';
 import '../../../../features/login/data/responses/login_r_m/login_r_m.dart';
@@ -12,7 +14,7 @@ part 'app_source_impl.dart';
 abstract class AppSource {
   Future<DependencyRM> getDependencies();
 
-  Future<String> register({
+  Future<RegisterError> register({
     required String firstName,
     required String lastName,
     required String about,
@@ -25,7 +27,7 @@ abstract class AppSource {
     required String birthDate,
     required int gender,
     required int type,
-    Part? avatar,
+    File? avatar,
   }) {
     throw UnimplementedError();
   }
@@ -43,5 +45,4 @@ abstract class AppSource {
   Future<ServiceModel> popularServices();
 
   Future<WhoIAmModel> whoAmI();
-
 }

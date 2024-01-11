@@ -48,7 +48,7 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<String> register(
+  Future<RegisterError> register(
     String firstName,
     String lastName,
     String about,
@@ -60,45 +60,91 @@ class _AppServiceClient implements AppServiceClient {
     String confirmPassword,
     String birthDate,
     int gender,
-    int type,
-    Part avatar,
-  ) async {
+    int type, {
+    File? avatar,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = {
-      'first_name': firstName,
-      'last_name': lastName,
-      'about': about,
-      'tags': tags,
-      'favorite_social_media': favoriteSocialMedia,
-      'salary': salary,
-      'email': email,
-      'password': password,
-      'password_confirmation': confirmPassword,
-      'birth_date': birthDate,
-      'gender': gender,
-      'type': type,
-      'avatar': avatar,
-    };
-    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'first_name',
+      firstName,
+    ));
+    _data.fields.add(MapEntry(
+      'last_name',
+      lastName,
+    ));
+    _data.fields.add(MapEntry(
+      'about',
+      about,
+    ));
+    _data.files.add(MapEntry(
+        'tags',
+        MultipartFile.fromBytes(
+          tags,
+          filename: null,
+        )));
+    favoriteSocialMedia.forEach((i) {
+      _data.fields.add(MapEntry('favorite_social_media', i));
+    });
+    _data.fields.add(MapEntry(
+      'salary',
+      salary.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'email',
+      email,
+    ));
+    _data.fields.add(MapEntry(
+      'password',
+      password,
+    ));
+    _data.fields.add(MapEntry(
+      'password_confirmation',
+      confirmPassword,
+    ));
+    _data.fields.add(MapEntry(
+      'birth_date',
+      birthDate,
+    ));
+    _data.fields.add(MapEntry(
+      'gender',
+      gender.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'type',
+      type.toString(),
+    ));
+    if (avatar != null) {
+      _data.files.add(MapEntry(
+        'avatar',
+        MultipartFile.fromFileSync(
+          avatar.path,
+          filename: avatar.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RegisterError>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
-      contentType: 'application/x-www-form-urlencoded',
+      contentType: 'multipart/form-data',
     )
-        .compose(
-          _dio.options,
-          'api/test/user/register',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-    final value = _result.data!;
+            .compose(
+              _dio.options,
+              'api/test/user/register',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RegisterError.fromJson(_result.data!);
     return value;
   }
 

@@ -12,7 +12,7 @@ final class WhoIAmInitial extends WhoIAmState {
 }
 
 final class WhoIAmLoading extends WhoIAmState {
-   const WhoIAmLoading();
+  const WhoIAmLoading();
 }
 
 final class WhoIAmLoaded extends WhoIAmState {

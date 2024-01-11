@@ -2,7 +2,7 @@
 part of 'register_cubit.dart';
 
 class RegisterState extends Equatable {
-  const RegisterState({
+  const RegisterState( {
     required this.stepperStatus,
     required this.securePassword,
     required this.secureConfirmPassword,
@@ -14,6 +14,10 @@ class RegisterState extends Equatable {
     required this.password,
     required this.confirmPassword,
     required this.userType,
+    this.avatar,
+    required this.about,
+    required this.salary,
+    required this.date,
   });
 
   final Name firstName;
@@ -28,6 +32,11 @@ class RegisterState extends Equatable {
   final String? error;
   final StepperStatus? stepperStatus;
 
+  final File? avatar;
+  final About about;
+  final int salary;
+  final String date;
+
   factory RegisterState.initial() {
     return const RegisterState(
       firstName: Name.unValidated(),
@@ -41,6 +50,10 @@ class RegisterState extends Equatable {
       submissionStatus: SubmissionStatus.idle,
       error: '',
       stepperStatus: StepperStatus.idle,
+      avatar: null,
+      about: About.unValidated(),
+      salary: 100,
+      date: '',
     );
   }
 
@@ -56,6 +69,10 @@ class RegisterState extends Equatable {
         userType,
         submissionStatus,
         stepperStatus,
+        avatar,
+        about,
+        salary,
+        date,
       ];
 
   RegisterState copyWith({
@@ -70,6 +87,10 @@ class RegisterState extends Equatable {
     SubmissionStatus? submissionStatus,
     String? error,
     StepperStatus? stepperStatus,
+    File? avatar,
+    About? about,
+    int? salary,
+    String? date,
   }) {
     return RegisterState(
       firstName: firstName ?? this.firstName,
@@ -84,6 +105,10 @@ class RegisterState extends Equatable {
       submissionStatus: submissionStatus ?? SubmissionStatus.idle,
       error: error,
       stepperStatus: stepperStatus ?? StepperStatus.idle,
+      avatar: avatar ?? this.avatar,
+      about: about ?? this.about,
+      salary: salary ?? this.salary,
+      date: date ?? this.date,
     );
   }
 }

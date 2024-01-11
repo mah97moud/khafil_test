@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+import 'package:khafil_test/core/validators/about.dart';
 import 'package:khafil_test/core/validators/confirm_password.dart';
 import 'package:khafil_test/core/validators/email.dart';
 import 'package:khafil_test/core/validators/name.dart';
 import 'package:khafil_test/core/validators/password.dart';
+
+import '../../../../core/helpers/app_utility.dart';
 
 part 'register_state.dart';
 
@@ -148,6 +154,65 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void onUserTypeChanged(int? newValue) {
     final newState = state.copyWith(userType: newValue);
+    emit(newState);
+  }
+
+  void onAvatarChanged(File? newValue) {
+    final newState = state.copyWith(avatar: newValue);
+    emit(newState);
+  }
+
+  void pickAvatar(BuildContext context) async {
+    try {
+      final pickedFile = await AppUtility.pickFile(context);
+      if (pickedFile != null) {
+        var path = pickedFile.path;
+        final file = path != null ? File(path) : null;
+        onAvatarChanged(file);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void onAboutChanged(String newValue) {
+    final prevAbout = state.about;
+    final shouldValidate = prevAbout.isNotValid;
+    final newState = state.copyWith(
+      about: shouldValidate
+          ? About.validated(newValue)
+          : About.unValidated(newValue),
+    );
+
+    emit(newState);
+  }
+
+  void onAboutUnfocused() {
+    final newState = state.copyWith(
+      about: About.validated(
+        state.about.value,
+      ),
+    );
+    emit(newState);
+  }
+
+   void onSalaryChanged(int newValue) {
+    final newState = state.copyWith(salary: newValue);
+    emit(newState);
+  }
+
+  void increaseSalary() {
+    final newState = state.copyWith(salary: state.salary + 1);
+    emit(newState);
+  }
+
+  void decreaseSalary() {
+    final newState = state.copyWith(salary: state.salary - 1);
+    emit(newState);
+  }
+
+  void onDateChanged(String newValue) {
+    final newState = state.copyWith(date: newValue);
     emit(newState);
   }
 

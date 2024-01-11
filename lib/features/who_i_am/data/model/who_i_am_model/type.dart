@@ -11,5 +11,6 @@ class WhoIAmType with _$WhoIAmType {
     @JsonKey(name: 'nice_name') String? niceName,
   }) = _Type;
 
-  factory WhoIAmType.fromJson(Map<String, dynamic> json) => _$WhoIAmTypeFromJson(json);
+  factory WhoIAmType.fromJson(Map<String, dynamic> json) =>
+      _$WhoIAmTypeFromJson(json);
 }

@@ -26,7 +26,7 @@ class RegisterSkills extends StatelessWidget {
           height: 125.0,
           width: double.infinity,
           decoration: ShapeDecoration(
-            color: ColorsManager.black,
+            color: ColorsManager.grey50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),

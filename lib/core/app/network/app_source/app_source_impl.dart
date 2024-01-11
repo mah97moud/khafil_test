@@ -12,7 +12,7 @@ class AppSourceImpl implements AppSource {
   }
 
   @override
-  Future<String> register({
+  Future<RegisterError> register({
     required String firstName,
     required String lastName,
     required String about,
@@ -25,10 +25,23 @@ class AppSourceImpl implements AppSource {
     required String birthDate,
     required int gender,
     required int type,
-    Part? avatar,
+    File? avatar,
   }) {
-    // TODO: implement register
-    throw UnimplementedError();
+    return _appServiceClient.register(
+      firstName,
+      lastName,
+      about,
+      tags,
+      favoriteSocialMedia,
+      salary,
+      email,
+      password,
+      confirmPassword,
+      birthDate,
+      gender,
+      type,
+      avatar: avatar,
+    );
   }
 
   @override

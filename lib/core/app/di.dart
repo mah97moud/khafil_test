@@ -25,8 +25,34 @@ import 'network/network_info.dart';
 final di = GetIt.instance..allowReassignment = true;
 
 List<SocialMedia> socialMedia = [];
-List<TypeModel> types = [];
-List<TagModel> tags = [];
+List<TypeModel> types = [
+  TypeModel(
+    value: 1,
+    label: 'Buyer',
+  ),
+  TypeModel(
+    value: 2,
+    label: 'Seller',
+  ),
+  TypeModel(
+    value: 3,
+    label: 'Both',
+  ),
+];
+List<TagModel> tags = [
+  TagModel(
+    value: 1,
+    label: 'English ',
+  ),
+  TagModel(
+    value: 2,
+    label: 'Flutter Dev',
+  ),
+  TagModel(
+    value: 3,
+    label: 'Mobile Dev',
+  )
+];
 
 Future<void> initDI() async {
   final sharedPreferences = await SharedPreferences.getInstance();

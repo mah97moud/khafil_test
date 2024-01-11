@@ -10,5 +10,6 @@ class WhoIAmTag with _$WhoIAmTag {
     String? name,
   }) = _Tag;
 
-  factory WhoIAmTag.fromJson(Map<String, dynamic> json) => _$WhoIAmTagFromJson(json);
+  factory WhoIAmTag.fromJson(Map<String, dynamic> json) =>
+      _$WhoIAmTagFromJson(json);
 }

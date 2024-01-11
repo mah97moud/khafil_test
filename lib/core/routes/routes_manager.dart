@@ -128,11 +128,11 @@ class RoutesManager {
                 path: '/${RoutesNames.whoIAm}',
                 name: RoutesNames.whoIAm,
                 pageBuilder: (context, state) {
-                  return   NoTransitionPage(
+                  return NoTransitionPage(
                     child: BlocProvider(
                       create: (context) => WhoIAmCubit(
                         di<WhoIAmRepo>(),
-                      )..whoAmI(), 
+                      )..whoAmI(),
                       child: const WhoIAmView(),
                     ),
                   );
