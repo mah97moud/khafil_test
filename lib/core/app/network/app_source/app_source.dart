@@ -1,5 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 
+import '../../../../features/home/data/models/country_model/country_model.dart';
 import '../../../../features/login/data/responses/login_r_m/login_r_m.dart';
 import '../../data/remote_models/dependency_r_m/dependency_r_m.dart';
 import '../app_service_client.dart';
@@ -30,4 +31,6 @@ abstract class AppSource {
   Future<LoginRM> login({
     required Map<String, dynamic> data,
   });
+
+  Future<CountryModel> countries();
 }

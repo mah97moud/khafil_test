@@ -8,6 +8,8 @@ import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 import 'package:khafil_test/features/register/managers/register_cubit/register_cubit.dart';
 import 'package:khafil_test/features/register/ui/register_view.dart';
 
+import '../../features/home/managers/countries_cubit/countries_cubit.dart';
+import '../../features/home/repository/home_repo.dart';
 import '../../features/home/ui/home_view.dart';
 import '../../features/home_layout/ui/home_layout.dart';
 import '../../features/login/managers/login_cubit/login_cubit.dart';
@@ -133,8 +135,13 @@ class RoutesManager {
                 path: '/${RoutesNames.home}',
                 name: RoutesNames.home,
                 pageBuilder: (context, state) {
-                  return const NoTransitionPage(
-                    child: HomeView(),
+                  return   NoTransitionPage(
+                    child: BlocProvider(
+                      create: (context) => CountriesCubit(
+                        di<HomeRepo>(), 
+                      )..getCountries(),
+                      child: const HomeView(),
+                    ),
                   );
                 },
               ),

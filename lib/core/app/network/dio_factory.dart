@@ -14,14 +14,12 @@ const String baseUrl = 'https://test.kafiil.com/';
 
 class DioFactory {
   const DioFactory();
-   
 
   Future<Dio> get dio async {
     final dio = Dio();
 
     final user = await SecureStorageService.getUserModel;
     final token = user?.accessToken;
-   
 
     final Map<String, dynamic> headers = {
       contentType: appJson,
@@ -34,7 +32,7 @@ class DioFactory {
       receiveDataWhenStatusError: true,
       followRedirects: false,
     );
-     if (token != null) {
+    if (token != null) {
       dio.options.headers[authorization] = 'Bearer $token';
     }
 

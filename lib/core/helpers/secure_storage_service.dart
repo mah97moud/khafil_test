@@ -4,8 +4,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../features/login/data/models/login_model/login_model.dart';
 
-
-
 LoginModel? loginModel;
 
 class SecureStorageService {

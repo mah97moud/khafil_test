@@ -12,7 +12,10 @@ class ThemeManager {
     ),
     textTheme: GoogleFonts.montserratTextTheme(),
   ).copyWith(
-    appBarTheme: const AppBarTheme(),
+    appBarTheme: const AppBarTheme(
+      centerTitle: false,
+      titleTextStyle: StylesManager.textStyle18,
+    ),
     scaffoldBackgroundColor: ColorsManager.white,
     inputDecorationTheme: const InputDecorationTheme(
       fillColor: ColorsManager.grey50,

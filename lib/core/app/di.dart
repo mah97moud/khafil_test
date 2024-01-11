@@ -11,6 +11,7 @@ import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/home/repository/home_repo.dart';
 import '../helpers/cache_helper.dart';
 import 'data/models/dependency_model/tag.dart';
 import 'data/models/dependency_model/type.dart';
@@ -81,6 +82,9 @@ Future<void> initDI() async {
   );
   di.registerFactory<LoginRepo>(
     () => LoginRepo(appSource: di(), networkInfo: di()),
+  );
+  di.registerFactory<HomeRepo>(
+    () => HomeRepo(appSource: di(), networkInfo: di()),
   );
 
   await getDependencies();

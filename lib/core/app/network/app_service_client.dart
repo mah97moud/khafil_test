@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:khafil_test/core/app/network/end_points.dart';
+import 'package:khafil_test/features/home/data/models/country_model/country_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../features/login/data/responses/login_r_m/login_r_m.dart';
@@ -42,4 +43,7 @@ abstract class AppServiceClient {
   Future<LoginRM> login(
     @Body() Map<String, dynamic> data,
   );
+
+  @GET(EndPoints.country)
+  Future<CountryModel> countries();
 }

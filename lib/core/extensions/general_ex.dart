@@ -15,17 +15,17 @@ extension IterableEx on Iterable {
     return null;
   }
 
- /// To List or empty 
+  /// To List or empty
   List<T> toListOrEmpty<T>() {
     if (this is T) {
-      return [this as T]; 
+      return [this as T];
     } else {
       return <T>[];
     }
   }
 }
 
-extension ListStringEx on List<String> ?{
+extension ListStringEx on List<String>? {
   List<String> toListOrEmpty() {
     if (this != null) {
       return this!;

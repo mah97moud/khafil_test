@@ -38,7 +38,6 @@ class LoginRepo extends Repository {
       final model = loginRM.toLoginModel;
 
       if (model.status == 200) {
-
         await SecureStorageService.saveUserModel(model);
         loginModel = await SecureStorageService.getUserModel;
         return Success(data: model);

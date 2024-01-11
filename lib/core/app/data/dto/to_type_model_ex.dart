@@ -4,6 +4,6 @@ import 'package:khafil_test/core/app/data/remote_models/dependency_r_m/type.dart
 /// convert TypeRM to TypeModel
 extension ToTypeModelEx on TypeRM? {
   TypeModel get toTypeModel {
-    return this != null ? TypeModel.fromJson(this!.toJson()) : TypeModel(); 
+    return this != null ? TypeModel.fromJson(this!.toJson()) : TypeModel();
   }
 }
