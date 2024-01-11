@@ -35,9 +35,13 @@ class AppSourceImpl implements AppSource {
   Future<LoginRM> login({required Map<String, dynamic> data}) async {
     return await _appServiceClient.login(data);
   }
-  
+
   @override
-  Future<CountryModel> countries() async {
-    return await _appServiceClient.countries();
+  Future<CountryModel> countries({
+    required int page,
+  }) async {
+    return await _appServiceClient.countries(
+      page,
+    );
   }
 }

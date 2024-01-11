@@ -45,5 +45,7 @@ abstract class AppServiceClient {
   );
 
   @GET(EndPoints.country)
-  Future<CountryModel> countries();
+  Future<CountryModel> countries(
+    @Query("page") int page,
+  );
 }

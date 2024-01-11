@@ -8,6 +8,7 @@ class ColorsManager {
   static const Color grey800 = Color(0xFF333333);
   static const Color grey500 = Color(0xff696F79);
   static const Color grey400 = Color(0xff8692A6);
+  static const Color grey300 = Color(0xFFC3C5C8);
   static const Color grey200 = Color(0xFFE6EAEF);
   static const Color grey50 = Color(0xFFF9F9F9);
   static const Color linkedinBg = Color(0xff2867B2);

@@ -10,17 +10,20 @@ class CountryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AppDefaultContainer(
-   
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Country',
-            style: StylesManager.textStyle12,
+          Expanded(
+            child: Text(
+              'Country',
+              style: StylesManager.textStyle12,
+            ),
           ),
-          Text(
-            'Capital',
-            style: StylesManager.textStyle12,
+          Expanded(
+            child: Text(
+              'Capital',
+              style: StylesManager.textStyle12,
+            ),
           ),
         ],
       ),

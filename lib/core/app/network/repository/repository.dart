@@ -15,7 +15,9 @@ abstract class Repository {
     throw UnimplementedError();
   }
 
-  Future<Result<List<Country>, Exception>> countries() {
+  Future<Result<List<Country>, Exception>> countries({
+    required int page,
+  }) {
     throw UnimplementedError();
   }
 }

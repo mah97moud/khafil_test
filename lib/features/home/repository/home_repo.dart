@@ -16,7 +16,9 @@ class HomeRepo extends Repository {
         _appSource = appSource;
 
   @override
-  Future<Result<List<Country>, Exception>> countries() async {
+  Future<Result<List<Country>, Exception>> countries({
+    required int page,
+  }) async {
     final isConnected = await _networkInfo.isConnected;
 
     if (!isConnected) {
@@ -27,7 +29,7 @@ class HomeRepo extends Repository {
     }
 
     try {
-      final countryRM = await _appSource.countries();
+      final countryRM = await _appSource.countries(page: page);
       final countries = countryRM.data ?? <Country>[];
 
       if (countryRM.status == 200) {

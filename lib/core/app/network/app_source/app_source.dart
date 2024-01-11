@@ -32,5 +32,7 @@ abstract class AppSource {
     required Map<String, dynamic> data,
   });
 
-  Future<CountryModel> countries();
+  Future<CountryModel> countries({
+    required int page,
+  });
 }

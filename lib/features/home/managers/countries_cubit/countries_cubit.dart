@@ -12,9 +12,13 @@ class CountriesCubit extends Cubit<CountriesState> {
 
   final HomeRepo _repo;
 
-  Future<void> getCountries() async {
+  Future<void> getCountries({
+    int page = 1,
+  }) async {
     emit(const CountriesLoading());
-    final result = await _repo.countries();
+    final result = await _repo.countries(
+      page: page,
+    );
     result.when(
       success: (countries) {
         emit(CountriesSuccess(countries: countries));
