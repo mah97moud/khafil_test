@@ -14,6 +14,7 @@ const String baseUrl = 'https://test.kafiil.com/';
 
 class DioFactory {
   const DioFactory();
+   
 
   Future<Dio> get dio async {
     final dio = Dio();

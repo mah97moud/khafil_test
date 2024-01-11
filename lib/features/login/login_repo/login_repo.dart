@@ -1,5 +1,6 @@
 import 'package:khafil_test/core/app/network/app_source/app_source.dart';
 import 'package:khafil_test/core/app/network/error_handler.dart';
+import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 import 'package:khafil_test/features/login/data/dto/to_login_model.dart';
 
 import '../../../core/app/network/network_info.dart';
@@ -34,14 +35,17 @@ class LoginRepo extends Repository {
 
       print('loginRM : $loginRM');
 
-      final loginModel = loginRM.toLoginModel;
+      final model = loginRM.toLoginModel;
 
-      if (loginModel.status == 200) {
-        return Success(data: loginModel);
+      if (model.status == 200) {
+
+        await SecureStorageService.saveUserModel(model);
+        loginModel = await SecureStorageService.getUserModel;
+        return Success(data: model);
       } else {
         return Failure(
           error: Exception('Something went wrong'),
-          message: 'Status Code ${loginModel.status}\n ',
+          message: 'Status Code ${model.status}\n ',
         );
       }
     } on Exception catch (e) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:khafil_test/core/app/data/models/dependency_model/social_media.dart';
@@ -6,10 +7,14 @@ import 'package:khafil_test/core/app/network/app_source/app_source.dart';
 import 'package:khafil_test/core/app/network/repository/app_repo.dart';
 import 'package:khafil_test/core/app/network/repository/repository.dart';
 import 'package:khafil_test/core/helpers/result.dart';
+import 'package:khafil_test/core/helpers/secure_storage_service.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../helpers/cache_helper.dart';
 import 'data/models/dependency_model/tag.dart';
 import 'data/models/dependency_model/type.dart';
+import 'network/app_pref.dart';
 import 'network/app_service_client.dart';
 import 'network/dio_factory.dart';
 import 'network/network_info.dart';
@@ -21,11 +26,38 @@ List<TypeModel> types = [];
 List<TagModel> tags = [];
 
 Future<void> initDI() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  if (sharedPreferences.getBool('first_run') ?? true) {
+    FlutterSecureStorage storage = const FlutterSecureStorage();
+
+    await storage.deleteAll();
+
+    sharedPreferences.setBool('first_run', false);
+  }
+
+  di.registerLazySingleton<CacheHelper>(
+    () => CacheHelperImpl(
+      sharedPreferences: sharedPreferences,
+    ),
+  );
+
+  di.registerLazySingleton<AppPrefs>(
+    () => AppPrefs(
+      cacheHelper: di(),
+    ),
+  );
+
   di.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(
       internetConnectionChecker: InternetConnectionChecker(),
     ),
   );
+
+  final appPrefs = di<AppPrefs>();
+
+  await appPrefs.getRememberMe();
+  loginModel = await SecureStorageService.getUserModel;
 
   di.registerFactory<DioFactory>(
     () => const DioFactory(),
