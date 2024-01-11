@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:khafil_test/core/managers/assets_manager.dart';
 import 'package:khafil_test/core/managers/colors_manager.dart';
-import 'package:khafil_test/core/managers/styles_manager.dart';
 import 'package:khafil_test/features/common/sizes.dart';
+import 'package:khafil_test/features/register/ui/widgets/register_custom_checkbox.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
+
+import '../../managers/register_cubit/register_cubit.dart';
 
 class RegisterFavSocialMedia extends StatelessWidget {
   const RegisterFavSocialMedia({
@@ -13,90 +16,66 @@ class RegisterFavSocialMedia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const RegisterFormText('Favorite Social Media'),
-        const Sizes.h16(),
-        RegisterCustomCheckbox(
-          assetSvg: SvgsManager.facebook,
-          value: true,
-          title: 'Facebook',
-          onChanged: (selected) {},
-        ),
-        RegisterCustomCheckbox(
-          assetSvg: SvgsManager.twitter,
-          value: true,
-          title: 'Twitter',
-          onChanged: (selected) {},
-        ),
-        RegisterCustomCheckbox(
-          assetSvg: SvgsManager.linkedin,
-          value: false,
-          icon: Container(
-            height: 20.0,
-            width: 20.0,
-            alignment: Alignment.center,
-            decoration: const ShapeDecoration(
-              shape: CircleBorder(),
-              color: ColorsManager.linkedinBg,
-            ),
-            child: SvgPicture.asset(
-              SvgsManager.linkedin,
-              fit: BoxFit.cover,
-            ),
-          ),
-          title: 'LinkedIn',
-          onChanged: (selected) {},
-        ),
-      ],
-    );
-  }
-}
-
-class RegisterCustomCheckbox extends StatelessWidget {
-  const RegisterCustomCheckbox({
-    super.key,
-    required this.assetSvg,
-    required this.title,
-    required this.value,
-    this.onChanged,
-    this.icon,
-  });
-
-  final String assetSvg;
-  final String title;
-  final bool value;
-  final void Function(bool?)? onChanged;
-  final Widget? icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return CheckboxListTile(
-      value: value,
-      title: Transform.translate(
-        offset: const Offset(-12, 0.0),
-        child: Row(
+    return BlocBuilder<RegisterCubit, RegisterState>(
+      builder: (context, state) {
+        final socialMedia = state.socials;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (icon == null) SvgPicture.asset(assetSvg),
-            if (icon != null) icon!,
-            const Sizes.w8(),
-            Text(
-              title,
-              style: StylesManager.textStyle14.copyWith(
-                color: ColorsManager.black,
+            const RegisterFormText('Favorite Social Media'),
+            const Sizes.h16(),
+            RegisterCustomCheckbox(
+              assetSvg: SvgsManager.facebook,
+              value: socialMedia.contains('facebook'),
+              title: 'Facebook',
+              onChanged: (selected) {
+                if (selected == true) {
+                  context.read<RegisterCubit>().addSocial('facebook');
+                } else {
+                  context.read<RegisterCubit>().removeSocial('facebook');
+                }
+              },
+            ),
+            RegisterCustomCheckbox(
+              assetSvg: SvgsManager.twitter,
+              value: socialMedia.contains('x'),
+              title: 'X',
+               onChanged: (selected ){
+                if (selected == true) {
+                  context.read<RegisterCubit>().addSocial('x');
+                } else {
+                  context.read<RegisterCubit>().removeSocial('x');
+                }
+               },
+            ),
+            RegisterCustomCheckbox(
+              assetSvg: SvgsManager.linkedin,
+              value: socialMedia.contains('linkedin'),
+              icon: Container(
+                height: 20.0,
+                width: 20.0,
+                alignment: Alignment.center,
+                decoration: const ShapeDecoration(
+                  shape: CircleBorder(),
+                  color: ColorsManager.linkedinBg,
+                ),
+                child: SvgPicture.asset(
+                  SvgsManager.linkedin,
+                  fit: BoxFit.cover,
+                ),
               ),
+              title: 'LinkedIn',
+              onChanged: (selected) {
+                if (selected == true) {
+                  context.read<RegisterCubit>().addSocial('linkedin');
+                } else {
+                  context.read<RegisterCubit>().removeSocial('linkedin');
+                }
+              },
             ),
           ],
-        ),
-      ),
-      dense: true,
-      onChanged: onChanged,
-      controlAffinity: ListTileControlAffinity.leading,
-      contentPadding: const EdgeInsets.only(
-        left: 12,
-        right: 24,
-      ),
+        );
+      },
     );
   }
 }
