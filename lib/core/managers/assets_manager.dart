@@ -9,6 +9,9 @@ class SvgsManager {
   static const String linkedin = '$svgsPath/linkedin.svg';
   static const String twitter = '$svgsPath/twitter.svg';
   static const String info = '$svgsPath/Info.svg';
+  static const String globeHemisphereWest = '$svgsPath/GlobeHemisphereWest.svg';
+  static const String shoppingCartSimple = '$svgsPath/ShoppingCartSimple.svg';
+  static const String userCircle = '$svgsPath/UserCircle.svg';
 }
 
 class ImagesManager {

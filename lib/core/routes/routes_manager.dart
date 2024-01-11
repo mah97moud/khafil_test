@@ -12,6 +12,7 @@ import '../../features/home/ui/home_view.dart';
 import '../../features/home_layout/ui/home_layout.dart';
 import '../../features/login/managers/login_cubit/login_cubit.dart';
 import '../../features/login/ui/login_view.dart';
+import '../../features/who_i_am/ui/who_i_am_view.dart';
 import '../app/di.dart';
 import '../app/network/app_pref.dart';
 
@@ -102,27 +103,43 @@ class RoutesManager {
     navigatorKey: _rootKey,
     initialLocation: '/${RoutesNames.login}',
     routes: [
-      ShellRoute(
-        navigatorKey: _shellKey,
-        pageBuilder: (context, state, child) {
+      StatefulShellRoute.indexedStack(
+        pageBuilder: (context, state, navigationShell) {
           return MaterialPage(
             key: state.pageKey,
             name: 'Home Layout',
             child: HomeLayout(
-              child: child,
+              navigationShell: navigationShell,
             ),
           );
         },
-        routes: [
-          GoRoute(
-            path: '/${RoutesNames.home}',
-            name: RoutesNames.home,
-            pageBuilder: (context, state) {
-              return const NoTransitionPage(
-                child: HomeView(),
-              );
-            },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/${RoutesNames.whoIAm}',
+                name: RoutesNames.whoIAm,
+                pageBuilder: (context, state) {
+                  return const NoTransitionPage(
+                    child: WhoIAmView(),
+                  );
+                },
+              ),
+            ],
           ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/${RoutesNames.home}',
+                name: RoutesNames.home,
+                pageBuilder: (context, state) {
+                  return const NoTransitionPage(
+                    child: HomeView(),
+                  );
+                },
+              ),
+            ],
+          )
         ],
       ),
       GoRoute(
