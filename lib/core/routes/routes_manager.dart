@@ -154,30 +154,31 @@ class RoutesManager {
     ],
     redirect: (context, state) {
       final bool loggingIn = state.uri.path == '/${RoutesNames.login}';
+      return null;
 
       //Todo: check if user is logged in or not
       // userModel = await SecureStorageService.getUserModel;
 
       // final bool loggedIn = userModel != null;
-      const bool loggedIn = false;
+      // const bool loggedIn = false;
 
-      if (!loggedIn) {
-        final bool isRegister =
-            state.matchedLocation.contains(RoutesNames.register);
-        if (isRegister) {
-          return '/login/${RoutesNames.register}';
-        }
+      // if (!loggedIn) {
+      //   final bool isRegister =
+      //       state.matchedLocation.contains(RoutesNames.register);
+      //   if (isRegister) {
+      //     return '/login/${RoutesNames.register}';
+      //   }
 
-        return '/${RoutesNames.login}';
-      }
+      //   return '/${RoutesNames.login}';
+      // }
 
       // if the user is logged in but still on the login page, send them to
       // the home page
-      if (loggingIn) {
-        return '/${RoutesNames.home}';
-      }
+      // if (loggingIn) {
+      //   return '/${RoutesNames.home}';
+      // }
 
-      return null;
+      // return null;
     },
   );
 }

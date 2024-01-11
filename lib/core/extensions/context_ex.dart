@@ -26,4 +26,6 @@ extension ContextEx on BuildContext {
         margin: const EdgeInsets.all(20),
       ),
     );
+
+  void hideSnackBar() => ScaffoldMessenger.of(this).clearSnackBars();
 }

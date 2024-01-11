@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:khafil_test/core/extensions/context_ex.dart';
 import 'package:khafil_test/core/routes/routes_manager.dart';
 import 'package:khafil_test/core/routes/routes_names.dart';
 import 'package:khafil_test/features/common/default_btn.dart';
@@ -17,23 +18,13 @@ class LoginBtn extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state.status == LoginStatus.success) {
+            debugPrint('Login Success');
             RoutesManager.goNamed(RoutesNames.home);
+            context.hideSnackBar();
           } else if (state.status == LoginStatus.error) {
-            ScaffoldMessenger.of(context)
-              ..clearSnackBars()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(state.message ?? ''),
-                ),
-              );
+            context.showSnackBar(state.message ?? '');
           } else if (state.status == LoginStatus.inProgress) {
-            ScaffoldMessenger.of(context)
-              ..clearSnackBars()
-              ..showSnackBar(
-                const SnackBar(
-                  content: Text('Logging in...'),
-                ),
-              );
+            context.showLoadingSnackBar('Login in progress...');
           }
         },
         builder: (context, state) {
