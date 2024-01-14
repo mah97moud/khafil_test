@@ -87,6 +87,13 @@ Future<void> initDI() async {
   final appPrefs = di<AppPrefs>();
 
   await appPrefs.getRememberMe();
+  print('rememberMe: $rememberMe');
+  
+  if(rememberMe == false && rememberMe != null){
+
+    await SecureStorageService.deleteUserModel();
+  }
+  rememberMe ??= true;
   loginModel = await SecureStorageService.getUserModel;
 
   di.registerFactory<DioFactory>(

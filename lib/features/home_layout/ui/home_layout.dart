@@ -17,11 +17,11 @@ class HomeLayout extends StatelessWidget {
     var curIndex = navigationShell.currentIndex;
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: curIndex,
-        onTap: _onTap,
-        items: [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: curIndex,
+        onDestinationSelected: _onTap,
+        destinations: [
+          NavigationDestination(
             icon: SvgPicture.asset(
               SvgsManager.userCircle,
               colorFilter: curIndex == 0
@@ -31,7 +31,7 @@ class HomeLayout extends StatelessWidget {
             ),
             label: 'Who Am I',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: SvgPicture.asset(
               SvgsManager.globeHemisphereWest,
               colorFilter: curIndex == 1
@@ -41,7 +41,7 @@ class HomeLayout extends StatelessWidget {
             ),
             label: 'Countries',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: SvgPicture.asset(
               SvgsManager.shoppingCartSimple,
               colorFilter: curIndex == 2
@@ -57,6 +57,8 @@ class HomeLayout extends StatelessWidget {
   }
 
   void _onTap(int index) {
+    print('index: $index');
+    print('currentIndex: ${navigationShell.currentIndex}');
     navigationShell.goBranch(
       index,
       initialLocation: index == navigationShell.currentIndex,

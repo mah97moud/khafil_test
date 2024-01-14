@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:khafil_test/core/managers/styles_manager.dart';
 import 'package:khafil_test/features/common/sizes.dart';
+import 'package:khafil_test/features/who_i_am/data/model/who_i_am_model/type.dart';
 
 class UserTypeWidget extends StatelessWidget {
   const UserTypeWidget({
     super.key,
-    this.type,
+   required this.type,
   });
 
-  final type;
+  final WhoIAmType type;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class UserTypeWidget extends StatelessWidget {
                 children: [
                   Radio<int>(
                     value: 0,
-                    groupValue: type,
+                    groupValue: type.code,
                     onChanged: (newValue) {
                       // _onChanged(newValue!);
                     },
@@ -49,7 +50,7 @@ class UserTypeWidget extends StatelessWidget {
                 children: [
                   Radio<int>(
                     value: 1,
-                    groupValue: type,
+                    groupValue: type.code,
                     onChanged: (newValue) {
                       // _onChanged(newValue!);
                     },
@@ -67,7 +68,7 @@ class UserTypeWidget extends StatelessWidget {
                 children: [
                   Radio<int>(
                     value: 2,
-                    groupValue: type,
+                    groupValue: type.code,
                     onChanged: (newValue) {
                       // _onChanged(newValue!);
                     },

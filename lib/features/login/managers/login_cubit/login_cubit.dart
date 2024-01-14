@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+import 'package:khafil_test/core/app/di.dart';
 import 'package:khafil_test/core/app/network/app_pref.dart';
 import 'package:khafil_test/core/helpers/result.dart';
 import 'package:khafil_test/features/login/login_repo/login_repo.dart';
@@ -90,12 +91,14 @@ class LoginCubit extends Cubit<LoginState> {
         );
 
         result.when(
-          success: (data) {
+          success: (data) async {
             rememberMe = true;
             final newState = state.copyWith(
               status: LoginStatus.success,
             );
+            await initDI();
             emit(newState);
+
           },
           failure: (message, ex) {
             final newState = state.copyWith(

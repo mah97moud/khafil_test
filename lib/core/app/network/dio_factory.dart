@@ -33,7 +33,7 @@ class DioFactory {
       followRedirects: false,
     );
     if (token != null) {
-      dio.options.headers[authorization] = 'Bearer $token';
+      dio.options.headers[authorization] = token;
     }
 
     // if (!kReleaseMode) {

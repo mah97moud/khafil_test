@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:khafil_test/core/managers/assets_manager.dart';
 import 'package:khafil_test/features/common/sizes.dart';
+import 'package:khafil_test/features/who_i_am/data/model/who_i_am_model/type.dart';
 import 'package:khafil_test/features/who_i_am/ui/widgets/profile_avatar.dart';
 import 'package:khafil_test/features/who_i_am/ui/widgets/profile_fav_social_media.dart';
 import 'package:khafil_test/features/who_i_am/ui/widgets/profile_info_container.dart';
@@ -66,7 +67,7 @@ class WhoIAmBody extends StatelessWidget {
                 ),
                 const Sizes.h8(),
                 UserTypeWidget(
-                  type: user.type ?? 0,
+                  type: user.type ?? WhoIAmType(),
                 ),
                 const Sizes.h8(),
                 ProfileInfoContainer(
