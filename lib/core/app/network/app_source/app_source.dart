@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:khafil_test/core/app/network/register_error/register_error.dart';
 
 import '../../../../features/home/data/models/country_model/country_model.dart';
@@ -18,8 +19,8 @@ abstract class AppSource {
     required String firstName,
     required String lastName,
     required String about,
-    required List<int> tags,
-    required List<String> favoriteSocialMedia,
+  required String tags,
+    required String favoriteSocialMedia,
     required int salary,
     required String email,
     required String password,

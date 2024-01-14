@@ -16,8 +16,8 @@ class AppSourceImpl implements AppSource {
     required String firstName,
     required String lastName,
     required String about,
-    required List<int> tags,
-    required List<String> favoriteSocialMedia,
+    required String tags,
+    required String favoriteSocialMedia,
     required int salary,
     required String email,
     required String password,
@@ -27,6 +27,17 @@ class AppSourceImpl implements AppSource {
     required int type,
     File? avatar,
   }) {
+    debugPrint('''Registering... Data ---> 
+    $firstName $lastName $email
+    $password
+    $confirmPassword
+    $birthDate
+    $gender
+    $type
+    $avatar
+    $tags
+    $favoriteSocialMedia
+    $salary''');
     return _appServiceClient.register(
       firstName,
       lastName,

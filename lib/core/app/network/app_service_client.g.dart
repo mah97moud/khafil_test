@@ -52,8 +52,8 @@ class _AppServiceClient implements AppServiceClient {
     String firstName,
     String lastName,
     String about,
-    List<int> tags,
-    List<String> favoriteSocialMedia,
+    String tags,
+    String favoriteSocialMedia,
     int salary,
     String email,
     String password,
@@ -80,15 +80,14 @@ class _AppServiceClient implements AppServiceClient {
       'about',
       about,
     ));
-    _data.files.add(MapEntry(
-        'tags',
-        MultipartFile.fromBytes(
-          tags,
-          filename: null,
-        )));
-    favoriteSocialMedia.forEach((i) {
-      _data.fields.add(MapEntry('favorite_social_media', i));
-    });
+    _data.fields.add(MapEntry(
+      'tags',
+      tags,
+    ));
+    _data.fields.add(MapEntry(
+      'favorite_social_media',
+      favoriteSocialMedia,
+    ));
     _data.fields.add(MapEntry(
       'salary',
       salary.toString(),

@@ -20,6 +20,7 @@ class ServiceCard extends StatelessWidget {
     return Container(
       height: 192,
       padding: const EdgeInsets.all(2),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       margin: const EdgeInsets.only(right: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -30,9 +31,23 @@ class ServiceCard extends StatelessWidget {
           Stack(
             alignment: Alignment.bottomLeft,
             children: [
-              Image.network(
-                service.mainImage ?? '',
-                fit: BoxFit.cover,
+              Container(
+                height: 103,
+                width: 151,
+                
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      service.mainImage ?? '',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    topRight: Radius.circular(8),
+                  ),
+                ),
+
               ),
               AppDefaultContainer(
                 borderRadius: 50.0,
@@ -57,6 +72,8 @@ class ServiceCard extends StatelessWidget {
             child: Text(
               service.title ?? '',
               style: StylesManager.textStyle11,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           const Sizes.h10(),

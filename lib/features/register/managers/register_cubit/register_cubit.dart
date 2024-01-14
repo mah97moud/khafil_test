@@ -319,8 +319,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     final salary = state.salary;
     final date = state.date;
     final gender = state.gender;
-    final skills = state.skills;
-    final socials = state.socials;
+    final skills = state.skills.join(',');
+    final socials = state.socials.join(',');
 
     final aboutValid = Formz.validate([
       state.about,
@@ -371,6 +371,9 @@ class RegisterCubit extends Cubit<RegisterState> {
         submissionStatus: SubmissionStatus.inProgress,
       ),
     );
+
+    print('Registering...');
+    debugPrint('Register tags $skills');
 
     try {
       final result = await _registerRepo.register(

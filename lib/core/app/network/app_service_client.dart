@@ -28,21 +28,21 @@ abstract class AppServiceClient {
 
   @POST(EndPoints.register)
   @MultiPart()
-  Future<RegisterError> register( 
+  Future<RegisterError> register(
     @Part(name: "first_name") String firstName,
-    @Part(name:"last_name") String lastName,
-    @Part(name:"about") String about,
-    @Part(name:"tags") List<int> tags,
-    @Part(name:"favorite_social_media") List<String> favoriteSocialMedia,
-    @Part(name:"salary") int salary,
-    @Part(name:"email") String email,
-    @Part(name:"password") String password,
-    @Part(name:"password_confirmation") String confirmPassword,
-    @Part(name:"birth_date") String birthDate,
-    @Part(name:"gender") int gender,
-    @Part(name:"type") int type,
-    {@Part(name:"avatar") File? avatar, }
-  );
+    @Part(name: "last_name") String lastName,
+    @Part(name: "about") String about,
+    @Part(name: 'tags',) String tags,
+    @Part(name: 'favorite_social_media') String favoriteSocialMedia,
+    @Part(name: "salary") int salary,
+    @Part(name: "email") String email,
+    @Part(name: "password") String password,
+    @Part(name: "password_confirmation") String confirmPassword,
+    @Part(name: "birth_date") String birthDate,
+    @Part(name: "gender") int gender,
+    @Part(name: "type") int type, {
+    @Part(name: "avatar") File? avatar,
+  });
 
   @POST(EndPoints.login)
   Future<LoginRM> login(
@@ -59,7 +59,7 @@ abstract class AppServiceClient {
 
   @GET(EndPoints.popularService)
   Future<ServiceModel> popularServices();
-  
+
   @GET(EndPoints.whoAmI)
   Future<WhoIAmModel> whoAmI();
 }

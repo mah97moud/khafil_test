@@ -14,12 +14,12 @@ abstract class Repository {
     throw UnimplementedError();
   }
 
-   Future<Result<RegisterError, Exception>> register({
+  Future<Result<RegisterError, Exception>> register({
     required String firstName,
     required String lastName,
     required String about,
-    required List<int> tags,
-    required List<String> favoriteSocialMedia,
+    required String tags,
+    required String favoriteSocialMedia,
     required int salary,
     required String email,
     required String password,
@@ -28,7 +28,7 @@ abstract class Repository {
     required int gender,
     required int type,
     File? avatar,
-  }){
+  }) {
     throw UnimplementedError();
   }
 
