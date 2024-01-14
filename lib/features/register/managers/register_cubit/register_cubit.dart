@@ -319,8 +319,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     final salary = state.salary;
     final date = state.date;
     final gender = state.gender;
-    final skills = state.skills.join(',');
-    final socials = state.socials.join(',');
+    final skills = state.skills;
+    final socials = state.socials;
 
     final aboutValid = Formz.validate([
       state.about,
@@ -365,6 +365,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
       return;
     }
+
+    
 
     emit(
       state.copyWith(

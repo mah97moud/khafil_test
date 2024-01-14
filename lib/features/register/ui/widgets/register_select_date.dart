@@ -2,6 +2,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:khafil_test/core/extensions/context_ex.dart';
 import 'package:khafil_test/core/managers/assets_manager.dart';
 import 'package:khafil_test/core/managers/colors_manager.dart';
 import 'package:khafil_test/features/register/ui/widgets/register_form_text.dart';
@@ -33,10 +34,20 @@ class RegisterSelectDate extends StatelessWidget {
 
             if (results != null) {
               final date = results[0];
-              final formattedDate = date.toString().split(' ').first;
-              debugPrint('Current Date Selected: $formattedDate');
+              if (date != null) {
+                final currentDate = DateTime.now();
+                if (date.isAfter(currentDate) 
+                || date.difference(currentDate).inDays == 0) {
+                  if (context.mounted) {
+                    context.showSnackBar('Date must be less than current date');
+                  }
+                  return;
+                }
+                final formattedDate = date.toString().split(' ').first;
+                debugPrint('Current Date Selected: $formattedDate');
 
-              readCubit.onDateChanged(formattedDate);
+                readCubit.onDateChanged(formattedDate);
+              }
             }
           },
           child: Container(
