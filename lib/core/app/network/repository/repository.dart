@@ -28,6 +28,8 @@ abstract class Repository {
     required int gender,
     required int type,
     File? avatar,
+
+  
   }) {
     throw UnimplementedError();
   }

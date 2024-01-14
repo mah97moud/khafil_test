@@ -24,6 +24,7 @@ class DioFactory {
     final Map<String, dynamic> headers = {
       contentType: appJson,
       accept: appJson,
+      'Accept-Language' : 'en',
     };
 
     dio.options = BaseOptions(
@@ -31,6 +32,7 @@ class DioFactory {
       headers: headers,
       receiveDataWhenStatusError: true,
       followRedirects: false,
+      
     );
     if (token != null) {
       dio.options.headers[authorization] = token;

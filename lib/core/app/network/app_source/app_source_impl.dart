@@ -38,11 +38,14 @@ class AppSourceImpl implements AppSource {
     $tags
     $favoriteSocialMedia
     $salary''');
+
+   final tagsList = tags.map((e) => e.toString()).toList(); 
+
     return _appServiceClient.register(
       firstName,
       lastName,
       about,
-      tags,
+      tagsList, 
       favoriteSocialMedia,
       salary,
       email,

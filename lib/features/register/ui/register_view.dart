@@ -82,17 +82,18 @@ class _RegisterViewState extends State<RegisterView> {
                                 listener: (context, state) {
                                   if (state.submissionStatus ==
                                       SubmissionStatus.success) {
-                                    debugPrint('Login Success');
+                                    debugPrint('Register Success');
+                                    context.showSnackBar('Register Success,'
+                                        'You can login now');
                                     RoutesManager.pushReplacementNamed(
                                         RoutesNames.login);
-                                    context.hideSnackBar();
                                   } else if (state.submissionStatus ==
                                       SubmissionStatus.error) {
                                     context.showSnackBar(state.error ?? '');
                                   } else if (state.submissionStatus ==
                                       SubmissionStatus.inProgress) {
                                     context.showLoadingSnackBar(
-                                        'Login in progress...');
+                                        'Register in progress...');
                                   }
                                 },
                                 builder: (context, state) {
@@ -100,9 +101,7 @@ class _RegisterViewState extends State<RegisterView> {
                                     'Submit',
                                     width: double.infinity,
                                     onPressed: () {
-                                      context
-                                          .read<RegisterCubit>()
-                                          .submit();
+                                      context.read<RegisterCubit>().submit();
                                     },
                                   );
                                 },

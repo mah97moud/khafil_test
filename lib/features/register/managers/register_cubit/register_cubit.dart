@@ -366,8 +366,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       return;
     }
 
-    
-
     emit(
       state.copyWith(
         submissionStatus: SubmissionStatus.inProgress,
@@ -400,6 +398,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           ),
         );
       }, failure: (failure, message) {
+        debugPrint('Register error: $failure');
         emit(
           state.copyWith(
             submissionStatus: SubmissionStatus.error,
@@ -408,6 +407,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         );
       });
     } catch (e) {
+      debugPrint('Register error: $e');
       emit(
         state.copyWith(
           submissionStatus: SubmissionStatus.error,

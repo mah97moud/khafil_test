@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:khafil_test/core/app/network/register_error/register_error.dart';
 
@@ -29,6 +30,8 @@ abstract class AppSource {
     required int gender,
     required int type,
     File? avatar,
+
+    
   }) {
     throw UnimplementedError();
   }

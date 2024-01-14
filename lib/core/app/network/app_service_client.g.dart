@@ -52,7 +52,7 @@ class _AppServiceClient implements AppServiceClient {
     String firstName,
     String lastName,
     String about,
-    List<int> tags,
+    List<String> tags,
     List<String> favoriteSocialMedia,
     int salary,
     String email,
@@ -67,26 +67,68 @@ class _AppServiceClient implements AppServiceClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = {
-      'first_name': firstName,
-      'last_name': lastName,
-      'about': about,
-      'tags[]': tags,
-      'favorite_social_media[]': favoriteSocialMedia,
-      'salary': salary,
-      'email': email,
-      'password': password,
-      'password_confirmation': confirmPassword,
-      'birth_date': birthDate,
-      'gender': gender,
-      'type': type,
-    };
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'first_name',
+      firstName,
+    ));
+    _data.fields.add(MapEntry(
+      'last_name',
+      lastName,
+    ));
+    _data.fields.add(MapEntry(
+      'about',
+      about,
+    ));
+    tags.forEach((i) {
+      _data.fields.add(MapEntry('tags[]', i));
+    });
+    favoriteSocialMedia.forEach((i) {
+      _data.fields.add(MapEntry('favorite_social_media[]', i));
+    });
+    _data.fields.add(MapEntry(
+      'salary',
+      salary.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'email',
+      email,
+    ));
+    _data.fields.add(MapEntry(
+      'password',
+      password,
+    ));
+    _data.fields.add(MapEntry(
+      'password_confirmation',
+      confirmPassword,
+    ));
+    _data.fields.add(MapEntry(
+      'birth_date',
+      birthDate,
+    ));
+    _data.fields.add(MapEntry(
+      'gender',
+      gender.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'type',
+      type.toString(),
+    ));
+    if (avatar != null) {
+      _data.files.add(MapEntry(
+        'avatar',
+        MultipartFile.fromFileSync(
+          avatar.path,
+          filename: avatar.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<RegisterError>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
-      contentType: 'application/x-www-form-urlencoded',
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
