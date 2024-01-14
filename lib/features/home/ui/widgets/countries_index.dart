@@ -51,9 +51,8 @@ class CountriesIndex extends StatelessWidget {
               ),
               colorSub: ColorsManager.white,
               controlButton: Container(
-                padding: const EdgeInsets.all(10),
-                width: 32,
-                height: 32,
+                padding: const EdgeInsets.all(11),
+               
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 decoration: BoxDecoration(
                   color: ColorsManager.white,
@@ -62,6 +61,7 @@ class CountriesIndex extends StatelessWidget {
                   ),
                   border: Border.all(color: ColorsManager.grey200),
                 ),
+                alignment: Alignment.center,
               ),
             );
           },

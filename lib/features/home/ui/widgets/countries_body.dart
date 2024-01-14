@@ -24,42 +24,44 @@ class CountriesBody extends StatelessWidget {
               ],
             ),
           CountriesSuccess() => Expanded(
+            child: SingleChildScrollView(
               child: Column(
-                children: [
-                  ListView.builder(
-                    itemCount: state.countries.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final country = state.countries[index];
-                      return AppDefaultContainer(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                country.name ?? '',
-                                style: StylesManager.textStyle12.copyWith(
-                                  color: ColorsManager.black,
+                  children: [
+                    ListView.builder(
+                      itemCount: state.countries.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final country = state.countries[index];
+                        return AppDefaultContainer(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  country.name ?? '',
+                                  style: StylesManager.textStyle12.copyWith(
+                                    color: ColorsManager.black,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                country.capital ?? '',
-                                style: StylesManager.textStyle12.copyWith(
-                                  color: ColorsManager.black,
+                              Expanded(
+                                child: Text(
+                                  country.capital ?? '',
+                                  style: StylesManager.textStyle12.copyWith(
+                                    color: ColorsManager.black,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                  const Sizes.h20(),
-                ],
-              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                    const Sizes.h20(),
+                  ],
+                ),
             ),
+          ),
           CountriesFailure() => Center(
               child: Text(state.message),
             ),
