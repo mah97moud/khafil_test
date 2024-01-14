@@ -55,7 +55,7 @@ List<TagModel> tags = [
   )
 ];
 
-Future<void> initDI() async {
+Future<void> initDI([bool? remember]) async {
   final sharedPreferences = await SharedPreferences.getInstance();
 
   if (sharedPreferences.getBool('first_run') ?? true) {
@@ -88,12 +88,15 @@ Future<void> initDI() async {
 
   await appPrefs.getRememberMe();
   print('rememberMe: $rememberMe');
-  
-  if(rememberMe == false && rememberMe != null){
 
+  if (remember == true) {
+    rememberMe ??= true;
+  }
+
+  if (rememberMe == null || rememberMe == false) {
     await SecureStorageService.deleteUserModel();
   }
-  rememberMe ??= true;
+
   loginModel = await SecureStorageService.getUserModel;
 
   di.registerFactory<DioFactory>(

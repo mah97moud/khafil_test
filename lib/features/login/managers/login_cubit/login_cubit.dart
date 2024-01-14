@@ -13,8 +13,9 @@ import '../../../../core/validators/password.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._repository, this._appPrefs) : super(LoginState.initial());
+  LoginCubit(this._repository, this._appPrefs) : super(LoginState.initial()) ;
 
+ 
   final LoginRepo _repository;
   final AppPrefs _appPrefs;
 
@@ -96,9 +97,8 @@ class LoginCubit extends Cubit<LoginState> {
             final newState = state.copyWith(
               status: LoginStatus.success,
             );
-            await initDI();
+            await initDI(true);
             emit(newState);
-
           },
           failure: (message, ex) {
             final newState = state.copyWith(
